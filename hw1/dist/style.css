@@ -1,0 +1,392 @@
+html, body, #app {
+  height: 100%;
+}
+
+body {
+  background: #202125;
+  padding: 0;
+  margin: 0;
+  color: #FFFFFF;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+#app #gallery {
+  flex: 1;
+  padding: 16px 16px 0 16px;
+  display: flex;
+  flex-direction: column;
+}
+#app #gallery .participant-block {
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-bottom: 42px;
+}
+#app #gallery .participant-block .main-box {
+  padding-top: 42px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9;
+}
+#app #gallery .participant-block .main-box img {
+  width: 30%;
+  border-radius: 50%;
+  max-width: 160px;
+  max-height: 40%;
+}
+#app #gallery .participant-block .main-box .participant-action-bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 1px 2px 0px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+  height: 44px;
+  border-radius: 22px;
+  background: #3C4043;
+  opacity: 0;
+  transition: opacity 0.25s linear;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button {
+  height: 44px;
+  width: 44px;
+  border-radius: 22px;
+  background: #FFFFFF00;
+  padding: 10px;
+  margin: 0;
+  transition: background 0.1s ease-in-out;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button .btn-hint {
+  z-index: 999;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button:is(:hover, :focus) > .btn-hint {
+  top: 48px;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button.disable {
+  cursor: auto;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button.disabled > svg {
+  fill: #7d8083;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button:not(.disabled):hover {
+  background: #FFFFFF0D;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button:not(.disabled):active {
+  background: #FFFFFF1F;
+}
+#app #gallery .participant-block .main-box:hover .participant-action-bar {
+  opacity: 0.6;
+}
+#app #gallery .participant-block .main-box:hover .participant-action-bar:hover {
+  opacity: 0.9;
+}
+#app #gallery .participant-block .main-box .muted-indicator {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  height: 26px;
+  width: 26px;
+  padding: 4px;
+  border-radius: 50%;
+  background: #2024244D;
+}
+#app #gallery .participant-block .participant-info {
+  height: 42px;
+  padding: 8px 0;
+  display: flex;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+}
+#app #gallery .participant-block .participant-info div.pin {
+  margin-left: 8px;
+}
+#app #gallery .participant-block .participant-info p.participant-name {
+  margin: 0 16px;
+  line-height: 24px;
+}
+#app #gallery #spotlight {
+  flex: 1;
+}
+#app #gallery #others {
+  display: block;
+  height: calc( (100vw - 56px) / 3 * 0.3 + 84px );
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: scroll;
+  margin: 16px 0 0 0;
+}
+#app #gallery #others .participant-block {
+  display: inline-flex;
+  width: calc((100% - 12px * 2)/3);
+  margin-right: 8px;
+}
+#app #gallery #others .participant-block:last-child {
+  margin: 0;
+}
+#app #gallery #others .participant-block:first-child .main-box .participant-action-bar button:first-child .btn-hint {
+  transform: translateX(-20px);
+}
+#app #gallery #others .participant-block:last-child .main-box .participant-action-bar button:last-child .btn-hint {
+  transform: translateX(calc( -100% + 20px ));
+}
+@media screen and (min-width: 620px) {
+  #app #gallery #others {
+    height: calc( (100vw - 56px) / 4 * 0.3 + 84px );
+  }
+  #app #gallery #others > .participant-block {
+    width: calc((100% - 12px * 3) / 4);
+  }
+}
+@media screen and (min-width: 770px) {
+  #app #gallery #others {
+    height: calc( (100vw - 56px) / 5 * 0.3 + 84px );
+  }
+  #app #gallery #others > .participant-block {
+    width: calc((100% - 12px * 4) / 5);
+  }
+}
+@media screen and (min-width: 920px) {
+  #app #gallery #others {
+    height: calc( (100vw - 56px) / 6 * 0.3 + 84px );
+  }
+  #app #gallery #others > .participant-block {
+    width: calc((100% - 12px * 5) / 6);
+  }
+}
+@media screen and (min-width: 1000px) {
+  #app #gallery {
+    flex-direction: row;
+  }
+  #app #gallery #spotlight {
+    flex: 1;
+  }
+  #app #gallery #others {
+    display: block;
+    height: calc(100vh - 80px - 16px);
+    width: 213px;
+    white-space: unset;
+    overflow-x: hidden;
+    margin: 0 0 0 16px;
+  }
+  #app #gallery #others .participant-block {
+    display: flex;
+    height: calc((100% - 12px * 2)/3);
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  #app #gallery #others .participant-block:last-child {
+    margin: 0;
+  }
+  #app #gallery #others .participant-block .main-box .participant-action-bar button:last-child .btn-hint {
+    transform: translateX(calc( -100% + 20px ));
+  }
+}
+@media screen and (min-width: 1000px) and (min-height: 640px) {
+  #app #gallery #others > .participant-block {
+    height: calc((100% - 12px * 3)/4);
+  }
+}
+@media screen and (min-width: 1000px) and (min-height: 900px) {
+  #app #gallery #others > .participant-block {
+    height: calc((100% - 12px * 4)/5);
+  }
+}
+@media screen and (min-width: 1000px) and (min-height: 1100px) {
+  #app #gallery #others > .participant-block {
+    height: calc((100% - 12px * 5)/6);
+  }
+}
+@media screen and (min-width: 1400px) {
+  #app #gallery {
+    flex-direction: row;
+  }
+  #app #gallery #spotlight {
+    flex: 1;
+  }
+  #app #gallery #others {
+    align-self: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 12px;
+    width: 30vw;
+    height: 35vw;
+    max-height: calc(100vh - 80px - 16px);
+    margin: 0 0 0 0;
+  }
+  #app #gallery #others .participant-block {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+    margin-right: 8px;
+  }
+  #app #gallery #others .participant-block:last-child {
+    margin: 0;
+  }
+  #app #gallery #others .participant-block:nth-child(2n) .main-box .participant-action-bar button:last-child .btn-hint {
+    transform: translateX(calc( -100% + 20px ));
+  }
+}
+#app #gallery #others > .participant-block {
+  background: #3C4043;
+}
+#app #action-bar {
+  flex: 0 0 80px;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+}
+#app #action-bar #action-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#app #action-bar #action-left #time-text {
+  padding: 0 12px;
+}
+#app #action-bar #action-left #meet-id-text {
+  padding: 0 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#app #action-bar #action-left .divider {
+  display: inline-block;
+  background: #FFFFFF;
+  height: 16px;
+  border-right: 1px solid #FFFFFF;
+}
+#app #action-bar #action-middle {
+  flex: 1;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+#app #action-bar #action-middle .action-button {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  margin: 0 6px;
+  padding: 8px;
+  background: #3C4043;
+}
+#app #action-bar #action-middle .action-button.act-btn-red {
+  background: #EA4335;
+}
+#app #action-bar #action-middle .action-button.act-btn-red:hover {
+  background: #FF4A3B;
+}
+#app #action-bar #action-middle .action-button.act-btn-red:is(:active,:focus) {
+  background: #FF584A;
+}
+#app #action-bar #action-middle .action-button.act-btn-wide {
+  width: 56px;
+}
+#app #action-bar #action-middle .action-button:hover {
+  background: #434649;
+}
+#app #action-bar #action-middle .action-button:is(:active, :focus) {
+  background: #525659;
+}
+#app #action-bar #action-right {
+  flex: 1;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+#app #action-bar #action-right .option-button {
+  height: 48px;
+  width: 48px;
+  border-radius: 24px;
+  padding: 12px;
+  background: #202125;
+}
+#app #action-bar #action-right .option-button .corner-text {
+  position: absolute;
+  height: 20px;
+  min-width: 20px;
+  line-height: 20px;
+  padding: 0 4px;
+  background: #5F6368;
+  color: #FFFFFF;
+  border-radius: 10px;
+  top: -5px;
+  left: 25px;
+  font-size: 12px;
+  transition: translateX(-50%);
+  z-index: 99;
+}
+#app #action-bar #action-right .option-button:hover {
+  background: #272A2E;
+}
+#app #action-bar #action-right .option-button:is(:active, :focus) {
+  background: #3C4043;
+}
+#app #action-bar #action-right .option-button:is(:hover, :focus) > .btn-hint {
+  bottom: 52px;
+}
+#app #action-bar #action-right .option-button:last-child:is(:hover, :focus) > .btn-hint {
+  transform: translateX(-75%);
+}
+#app .action-button, #app .option-button, #app .participant-action-bar > button {
+  cursor: pointer;
+  border: 0;
+  position: relative;
+  transition: all 0.1s ease-in-out;
+  outline: none;
+}
+#app .action-button .btn-hint, #app .option-button .btn-hint, #app .participant-action-bar > button .btn-hint {
+  opacity: 0;
+  background: #3C4340;
+  color: #DCDCDC;
+  padding: 4px 8px;
+  border-radius: 4px;
+  position: absolute;
+  left: 50%;
+  font-size: 14px;
+  font-weight: 300;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  transition: opacity 0.12s ease-in-out 0.5s;
+  z-index: 999;
+}
+#app .action-button .btn-hint:not(.at-bottom), #app .option-button .btn-hint:not(.at-bottom), #app .participant-action-bar > button .btn-hint:not(.at-bottom) {
+  bottom: -9999px;
+}
+#app .action-button .btn-hint.at-bottom, #app .option-button .btn-hint.at-bottom, #app .participant-action-bar > button .btn-hint.at-bottom {
+  top: -9999px;
+}
+#app .action-button:is(:hover, :focus) > .btn-hint, #app .option-button:is(:hover, :focus) > .btn-hint, #app .participant-action-bar > button:is(:hover, :focus) > .btn-hint {
+  transition: all 0 ease-in-out 1s;
+  opacity: 1;
+  outline: none;
+}
+#app .action-button:is(:hover, :focus) > .btn-hint:not(.at-bottom), #app .option-button:is(:hover, :focus) > .btn-hint:not(.at-bottom), #app .participant-action-bar > button:is(:hover, :focus) > .btn-hint:not(.at-bottom) {
+  bottom: 44px;
+}
+#app .action-button:is(:hover, :focus) > .btn-hint.at-bottom, #app .option-button:is(:hover, :focus) > .btn-hint.at-bottom, #app .participant-action-bar > button:is(:hover, :focus) > .btn-hint.at-bottom {
+  top: 44px;
+}
