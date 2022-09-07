@@ -36,7 +36,7 @@
 - 初步完成響應式設計 (Responsive Web Design) (詳如下文所示)
 
 ## 響應式設計 (Responsive Design)
-![Responsive Design Details]()
+![Responsive Design Details](https://github.com/kinoras/wp1111/blob/main/hw1/images/HW-EEWP-001-P1.png)
 
 
 
