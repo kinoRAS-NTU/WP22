@@ -164,14 +164,6 @@ body {
     width: calc((100% - 12px * 4) / 5);
   }
 }
-@media screen and (min-width: 920px) {
-  #app #gallery #others {
-    height: calc( (100vw - 56px) / 6 * 0.3 + 84px );
-  }
-  #app #gallery #others > .participant-block {
-    width: calc((100% - 12px * 5) / 6);
-  }
-}
 @media screen and (min-width: 1000px) {
   #app #gallery {
     flex-direction: row;
@@ -210,11 +202,6 @@ body {
     height: calc((100% - 12px * 4)/5);
   }
 }
-@media screen and (min-width: 1000px) and (min-height: 1100px) {
-  #app #gallery #others > .participant-block {
-    height: calc((100% - 12px * 5)/6);
-  }
-}
 @media screen and (min-width: 1400px) {
   #app #gallery {
     flex-direction: row;
@@ -226,11 +213,14 @@ body {
     align-self: center;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(0, 1fr);
     grid-gap: 12px;
     width: 30vw;
     height: 35vw;
     max-height: calc(100vh - 80px - 16px);
+    min-height: 1px;
     margin: 0 0 0 0;
+    overflow: hidden;
   }
   #app #gallery #others .participant-block {
     display: inline-flex;
@@ -240,6 +230,14 @@ body {
   }
   #app #gallery #others .participant-block:last-child {
     margin: 0;
+  }
+  #app #gallery #others .participant-block:last-child:nth-child(2n+1) {
+    grid-column: span 2;
+    width: 70%;
+    margin-left: 15%;
+  }
+  #app #gallery #others .participant-block:nth-child(2n+1) .main-box .participant-action-bar button:last-child .btn-hint {
+    transform: translateX(-50%);
   }
   #app #gallery #others .participant-block:nth-child(2n) .main-box .participant-action-bar button:last-child .btn-hint {
     transform: translateX(calc( -100% + 20px ));
@@ -284,12 +282,23 @@ body {
   justify-content: center;
 }
 #app #action-bar #action-middle .action-button {
+  border-radius: 20px;
+  padding: 0;
+  margin: 0 6px;
+  background: #3C4043;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#app #action-bar #action-middle .action-button label {
+  cursor: pointer;
+  display: block;
+  padding: 8px;
   height: 40px;
   width: 40px;
-  border-radius: 20px;
-  margin: 0 6px;
-  padding: 8px;
-  background: #3C4043;
+}
+#app #action-bar #action-middle .action-button label:nth-child(2) {
+  display: none;
 }
 #app #action-bar #action-middle .action-button.act-btn-red {
   background: #EA4335;
@@ -349,6 +358,42 @@ body {
 #app #action-bar #action-right .option-button:last-child:is(:hover, :focus) > .btn-hint {
   transform: translateX(-75%);
 }
+#app input[type=checkbox] {
+  display: none;
+}
+#app input#cb-audio-off:checked ~ #action-bar > #action-middle .action-button:nth-child(1) {
+  background: #EA4335;
+}
+#app input#cb-audio-off:checked ~ #action-bar > #action-middle .action-button:nth-child(1):hover {
+  background: #FF4A3B;
+}
+#app input#cb-audio-off:checked ~ #action-bar > #action-middle .action-button:nth-child(1):is(:active,:focus) {
+  background: #FF584A;
+}
+#app input#cb-audio-off:checked ~ #action-bar > #action-middle .action-button:nth-child(1) label:nth-child(1) {
+  display: none;
+}
+#app input#cb-audio-off:checked ~ #action-bar > #action-middle .action-button:nth-child(1) label:nth-child(2) {
+  display: block;
+}
+#app input#cb-audio-off:not(:checked) ~ #gallery > #spotlight .participant-block .main-box .muted-indicator {
+  display: none;
+}
+#app input#cb-video-off:checked ~ #action-bar > #action-middle .action-button:nth-child(2) {
+  background: #EA4335;
+}
+#app input#cb-video-off:checked ~ #action-bar > #action-middle .action-button:nth-child(2):hover {
+  background: #FF4A3B;
+}
+#app input#cb-video-off:checked ~ #action-bar > #action-middle .action-button:nth-child(2):is(:active,:focus) {
+  background: #FF584A;
+}
+#app input#cb-video-off:checked ~ #action-bar > #action-middle .action-button:nth-child(2) label:nth-child(1) {
+  display: none;
+}
+#app input#cb-video-off:checked ~ #action-bar > #action-middle .action-button:nth-child(2) label:nth-child(2) {
+  display: block;
+}
 #app .action-button, #app .option-button, #app .participant-action-bar > button {
   cursor: pointer;
   border: 0;
@@ -379,14 +424,14 @@ body {
 #app .action-button .btn-hint.at-bottom, #app .option-button .btn-hint.at-bottom, #app .participant-action-bar > button .btn-hint.at-bottom {
   top: -9999px;
 }
-#app .action-button:is(:hover, :focus) > .btn-hint, #app .option-button:is(:hover, :focus) > .btn-hint, #app .participant-action-bar > button:is(:hover, :focus) > .btn-hint {
+#app .action-button:is(:hover, :focus) .btn-hint, #app .option-button:is(:hover, :focus) .btn-hint, #app .participant-action-bar > button:is(:hover, :focus) .btn-hint {
   transition: all 0 ease-in-out 1s;
   opacity: 1;
   outline: none;
 }
-#app .action-button:is(:hover, :focus) > .btn-hint:not(.at-bottom), #app .option-button:is(:hover, :focus) > .btn-hint:not(.at-bottom), #app .participant-action-bar > button:is(:hover, :focus) > .btn-hint:not(.at-bottom) {
+#app .action-button:is(:hover, :focus) .btn-hint:not(.at-bottom), #app .option-button:is(:hover, :focus) .btn-hint:not(.at-bottom), #app .participant-action-bar > button:is(:hover, :focus) .btn-hint:not(.at-bottom) {
   bottom: 44px;
 }
-#app .action-button:is(:hover, :focus) > .btn-hint.at-bottom, #app .option-button:is(:hover, :focus) > .btn-hint.at-bottom, #app .participant-action-bar > button:is(:hover, :focus) > .btn-hint.at-bottom {
+#app .action-button:is(:hover, :focus) .btn-hint.at-bottom, #app .option-button:is(:hover, :focus) .btn-hint.at-bottom, #app .participant-action-bar > button:is(:hover, :focus) .btn-hint.at-bottom {
   top: 44px;
 }
