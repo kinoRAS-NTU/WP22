@@ -33,7 +33,7 @@
 - 當游標滑⾄每個「方塊中央」的功能按鈕上時，會在該按鈕下⽅顯⽰提⽰
 - 點擊靜⾳按鈕時，介面可以切換靜⾳/無靜⾳ (提示文字、圖示、右上角靜⾳狀態改變)
 - 點擊鏡頭按鈕時，介面可以切換鏡頭開關 (提示文字、圖示改變)
-- 初步完成響應式設計 (Responsive Web Design) (詳如下文所示)
+- 初步完成響應式設計 (Responsive Web Design) (詳如下圖所示)
 
 ## 響應式設計 (Responsive Design)
 ![Responsive Design Details](https://github.com/kinoras/wp1111/blob/main/hw1/images/HW-EEWP-001-P1.png)
