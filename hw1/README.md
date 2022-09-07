@@ -1,4 +1,4 @@
-#HW1: HTML/CSS Exercise
+# HW1: HTML/CSS Exercise
 
 **同學你好！以下是此份作業的完成情況及簡介，請參考。**
 
@@ -36,7 +36,7 @@
 - 初步完成響應式設計 (Responsive Web Design) (詳如下文所示)
 
 ## 響應式設計 (Responsive Design)
-
+![Responsive Design Details]()
 
 
 
