@@ -36,7 +36,7 @@
 - 初步完成響應式設計 (Responsive Web Design) (詳如下圖所示)
 
 ## 其他已完成的項目
-- 滑鼠游標按下按鈕時，有不同的回饋效果
+- 滑鼠游標移至按鈕上及按下按鈕時，有不同的回饋效果
 
 ## 響應式設計 (Responsive Design)
 ![Responsive Design Details](https://github.com/kinoras/wp1111/blob/main/hw1/images/HW-EEWP-001-P1.png)
