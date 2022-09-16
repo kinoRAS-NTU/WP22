@@ -1,0 +1,1617 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+html, body, #app {
+  height: 100%;
+}
+
+body {
+  background: #202125;
+  padding: 0;
+  margin: 0;
+  color: #FFFFFF;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+#app #gallery {
+  flex: 1;
+  padding: 16px 16px 0 16px;
+  display: flex;
+  flex-direction: column;
+}
+#app #gallery .participant-block {
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-bottom: 42px;
+}
+#app #gallery .participant-block .main-box {
+  padding-top: 42px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9;
+}
+#app #gallery .participant-block .main-box img {
+  width: 30%;
+  border-radius: 50%;
+  max-width: 150px;
+  max-height: 40%;
+}
+#app #gallery .participant-block .main-box .participant-action-bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 1px 2px 0px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+  height: 44px;
+  border-radius: 22px;
+  background: #3C4043;
+  opacity: 0;
+  transition: opacity 0.25s linear;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button {
+  height: 44px;
+  width: 44px;
+  border-radius: 22px;
+  background: #FFFFFF00;
+  padding: 10px;
+  margin: 0;
+  transition: background 0.1s ease-in-out;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button .btn-hint {
+  z-index: 999;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button:is(:hover, :focus) > .btn-hint {
+  top: 48px;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button.disable {
+  cursor: auto;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button.disabled > svg {
+  fill: #7d8083;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button:not(.disabled):hover {
+  background: #FFFFFF0D;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button:not(.disabled):active {
+  background: #FFFFFF1F;
+}
+#app #gallery .participant-block .main-box:hover .participant-action-bar {
+  opacity: 0.6;
+}
+#app #gallery .participant-block .main-box:hover .participant-action-bar:hover {
+  opacity: 0.9;
+}
+#app #gallery .participant-block .main-box .muted-indicator, #app #gallery .participant-block .main-box .remove-user-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  height: 26px;
+  width: 26px;
+  padding: 4px;
+  border-radius: 50%;
+  background: #2024244D;
+}
+#app #gallery .participant-block .main-box .remove-user-btn {
+  cursor: pointer;
+  right: unset;
+  left: 12px;
+}
+#app #gallery .participant-block .participant-info {
+  height: 42px;
+  padding: 8px 0;
+  display: flex;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+}
+#app #gallery .participant-block .participant-info div.pin {
+  margin-left: 8px;
+  display: none;
+}
+#app #gallery .participant-block .participant-info p.participant-name {
+  margin: 0 16px;
+  line-height: 24px;
+}
+#app #gallery .participant-block .show-at-pinned {
+  display: none !important;
+}
+#app #gallery .participant-block .show-at-unpinned {
+  display: inline-block !important;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button.disabled-at-unpinned {
+  cursor: auto;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button.disabled-at-unpinned > svg {
+  fill: #7d8083;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button.disabled-at-unpinned:hover {
+  background: #FFFFFF00;
+}
+#app #gallery .participant-block .main-box .participant-action-bar button.disabled-at-unpinned:active {
+  background: #FFFFFF00;
+}
+#app #gallery .participant-block.pinned .participant-info div.pin {
+  display: block;
+}
+#app #gallery .participant-block.pinned .show-at-pinned {
+  display: inline-block !important;
+}
+#app #gallery .participant-block.pinned .show-at-unpinned {
+  display: none !important;
+}
+#app #gallery .participant-block.pinned .main-box .participant-action-bar button.disabled-at-pinned {
+  cursor: auto;
+}
+#app #gallery .participant-block.pinned .main-box .participant-action-bar button.disabled-at-pinned > svg {
+  fill: #7d8083;
+}
+#app #gallery .participant-block.pinned .main-box .participant-action-bar button.disabled-at-pinned:hover {
+  background: #FFFFFF00;
+}
+#app #gallery .participant-block.pinned .main-box .participant-action-bar button.disabled-at-pinned:active {
+  background: #FFFFFF00;
+}
+#app #gallery .participant-block.pinned .main-box .participant-action-bar button.disabled-at-unpinned {
+  cursor: pointer;
+}
+#app #gallery .participant-block.pinned .main-box .participant-action-bar button.disabled-at-unpinned > svg {
+  fill: #E8EAED;
+}
+#app #gallery .participant-block.pinned .main-box .participant-action-bar button.disabled-at-unpinned:hover {
+  background: #FFFFFF0D;
+}
+#app #gallery .participant-block.pinned .main-box .participant-action-bar button.disabled-at-unpinned:active {
+  background: #FFFFFF1F;
+}
+#app #gallery .participant-block:not(.muted) .main-box .muted-indicator, #app #gallery .participant-block:not(.muted) .main-box .remove-user-btn {
+  display: none;
+}
+#app #gallery.pin {
+  padding: 12px 12px 0 12px;
+}
+#app #gallery.pin #spotlight {
+  flex: 1;
+  flex-grow: 3;
+  padding: 4px 4px 0 4px;
+}
+#app #gallery.pin #others {
+  flex: 1;
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: scroll;
+  margin: 16px 0 0 0;
+  transition: flex-grow 0.2s ease-in-out;
+}
+#app #gallery.pin #others div.pin {
+  display: none !important;
+}
+#app #gallery.pin #others .participant-block {
+  display: inline-flex;
+}
+#app #gallery.pin #others .participant-block.pinned {
+  pointer-events: none !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+}
+#app #gallery.pin #others::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  transition: width 0.1s ease-in-out 0.1s;
+}
+@media screen and (min-width: 0px) {
+  #app #gallery.pin #others .participant-block {
+    width: calc(100% - 8px);
+    margin: 0 4px;
+  }
+}
+@media screen and (min-width: 450px) {
+  #app #gallery.pin #others .participant-block {
+    width: calc((100% - 8px - 8px * 1)/2);
+  }
+}
+@media screen and (min-width: 900px) {
+  #app #gallery.pin #others .participant-block {
+    width: calc((100% - 8px - 8px * 2)/3);
+  }
+}
+@media screen and (min-width: 1200px) {
+  #app #gallery.pin {
+    flex-direction: row;
+  }
+  #app #gallery.pin #spotlight {
+    flex: 2;
+    padding: 4px 0 0 4px;
+  }
+  #app #gallery.pin #others {
+    height: calc(100vh - 16px - 80px);
+    margin: 0px 4px 0 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  #app #gallery.pin #others .participant-block {
+    flex-shrink: 0;
+    width: 100%;
+    height: calc((100vh - 100px - 8px * 0) / 1);
+    margin: 6px 0;
+  }
+}
+@media screen and (min-width: 1200px) and (min-height: 600px) {
+  #app #gallery.pin #others .participant-block {
+    height: calc((100vh - 100px - 12px * 1) / 2);
+  }
+}
+@media screen and (min-width: 1200px) and (min-height: 950px) {
+  #app #gallery.pin #others .participant-block {
+    height: calc((100vh - 100px - 12px * 2) / 3);
+  }
+}
+@media screen and (min-width: 1200px) and (min-height: 1300px) {
+  #app #gallery.pin #others .participant-block {
+    height: calc((100vh - 100px - 12px * 3) / 4);
+  }
+}
+@media screen and (min-width: 1200px) and (min-height: 1600px) {
+  #app #gallery.pin #others .participant-block {
+    height: calc((100vh - 100px - 12px * 4) / 5);
+  }
+}
+@media screen and (min-width: 1600px) {
+  #app #gallery.pin #spotlight {
+    flex: 3;
+    padding: 4px 0 0 4px;
+  }
+  #app #gallery.pin #others {
+    flex: 2;
+    height: calc(100vh - 16px - 80px);
+    margin: 0px 4px 0 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+  }
+  #app #gallery.pin #others .participant-block {
+    flex-shrink: 0;
+    width: calc(50% - 12px);
+    height: calc((100vh - 100px - 12px * 0) / 1);
+    margin: 6px 6px;
+  }
+  #app #gallery.pin #others .participant-block:nth-child(2n):last-child:not(.pinned) {
+    width: 65%;
+  }
+}
+@media screen and (min-width: 1600px) and (min-height: 450px) {
+  #app #gallery.pin #others .participant-block {
+    height: calc((100vh - 100px - 12px * 1) / 2);
+  }
+}
+@media screen and (min-width: 1600px) and (min-height: 700px) {
+  #app #gallery.pin #others .participant-block {
+    height: calc((100vh - 100px - 12px * 2) / 3);
+  }
+}
+@media screen and (min-width: 1600px) and (min-height: 1000px) {
+  #app #gallery.pin #others .participant-block {
+    height: calc((100vh - 100px - 12px * 3) / 4);
+  }
+}
+@media screen and (min-width: 1600px) and (min-height: 1300px) {
+  #app #gallery.pin #others .participant-block {
+    height: calc((100vh - 100px - 12px * 4) / 5);
+  }
+}
+@media screen and (min-width: 1600px) and (min-width: 1600px) {
+  #app #gallery.pin.last-pinned #others .participant-block:nth-child(2n+1):nth-last-child(2):not(.pinned) {
+    width: 65%;
+  }
+}
+#app #gallery.pin.size-1 #others {
+  flex: 0;
+  height: 0;
+  width: 0;
+  margin: 0;
+}
+@media screen and (min-width: 450px) {
+  #app #gallery.pin.size-2 #others::before {
+    width: calc( 100% / 4 );
+  }
+}
+@media screen and (min-width: 900px) {
+  #app #gallery.pin.size-2 #others::before {
+    width: calc( 100% / 3 );
+  }
+}
+@media screen and (min-width: 1200px) and (min-height: 600px) {
+  #app #gallery.pin.size-2 #others::before {
+    height: calc( 100% / 4 );
+    width: 1px;
+  }
+}
+@media screen and (min-width: 1200px) and (min-height: 950px) {
+  #app #gallery.pin.size-2 #others::before {
+    height: calc( 100% / 3 );
+  }
+}
+@media screen and (min-width: 1200px) and (min-height: 1300px) {
+  #app #gallery.pin.size-2 #others::before {
+    height: calc( 100% / 8 * 3 );
+  }
+}
+@media screen and (min-width: 1200px) and (min-height: 1600px) {
+  #app #gallery.pin.size-2 #others::before {
+    height: calc( 100% / 5 * 2 );
+  }
+}
+@media screen and (min-width: 1600px) {
+  #app #gallery.pin.size-2 #others::before {
+    height: 0px;
+    width: calc(100% - 12px);
+  }
+  #app #gallery.pin.size-2 #others .participant-block {
+    width: calc(100% - 12px);
+  }
+}
+@media screen and (min-width: 1600px) and (min-height: 450px) {
+  #app #gallery.pin.size-2 #others::before {
+    height: 0px;
+  }
+  #app #gallery.pin.size-2 #others .participant-block {
+    height: 100%;
+  }
+}
+@media screen and (min-width: 1600px) and (min-height: 700px) {
+  #app #gallery.pin.size-2 #others::before {
+    height: calc( 100% / 4 );
+  }
+  #app #gallery.pin.size-2 #others .participant-block {
+    height: 50%;
+  }
+}
+@media screen and (min-width: 900px) {
+  #app #gallery.pin.size-3 #others::before {
+    width: calc( 100% / 6 );
+  }
+}
+@media screen and (min-width: 1200px) and (min-height: 950px) {
+  #app #gallery.pin.size-3 #others::before {
+    height: calc( 100% / 6 );
+    width: 1px;
+  }
+}
+@media screen and (min-width: 1200px) and (min-height: 1300px) {
+  #app #gallery.pin.size-3 #others::before {
+    height: calc( 100% / 4 );
+  }
+}
+@media screen and (min-width: 1200px) and (min-height: 1600px) {
+  #app #gallery.pin.size-3 #others::before {
+    height: calc( 100% / 10 * 3 );
+  }
+}
+@media screen and (min-width: 1600px) {
+  #app #gallery.pin.size-3 #others::before {
+    height: 0px;
+    width: calc(100% - 12px);
+  }
+}
+@media screen and (min-width: 1600px) and (min-height: 0px) {
+  #app #gallery.pin.size-3 #others::before {
+    height: 0px;
+  }
+  #app #gallery.pin.size-3 #others .participant-block {
+    height: calc(100% - 12px);
+    width: calc(50% - 12px);
+  }
+}
+@media screen and (min-width: 1600px) and (min-height: 650px) {
+  #app #gallery.pin.size-3 #others .participant-block {
+    height: calc(50% - 12px);
+    width: calc(100% - 12px);
+  }
+}
+@media screen and (min-width: 1600px) and (min-height: 1300px) {
+  #app #gallery.pin.size-3 #others::before {
+    height: calc( 100% * 0.15 );
+  }
+  #app #gallery.pin.size-3 #others .participant-block {
+    height: calc(35% - 12px);
+    width: calc(100% - 12px);
+  }
+}
+@media screen and (min-width: 1200px) and (min-height: 1300px) {
+  #app #gallery.pin.size-4 #others::before {
+    height: calc( 100% / 8 );
+  }
+}
+@media screen and (min-width: 1200px) and (min-height: 1600px) {
+  #app #gallery.pin.size-4 #others::before {
+    height: calc( 100% / 5 );
+  }
+}
+@media screen and (min-width: 1200px) and (min-height: 1600px) {
+  #app #gallery.pin.size-5 #others::before {
+    height: calc( 100% / 10 );
+  }
+}
+@media screen and (min-width: 1600px) {
+  #app #gallery.pin.size-4 #others::before, #app #gallery.pin.size-5 #others::before {
+    height: 0px;
+    width: calc(100% - 12px);
+  }
+}
+@media screen and (min-width: 1600px) and (min-height: 700px) and (max-height: 899px) {
+  #app #gallery.pin.size-4 #others .participant-block, #app #gallery.pin.size-5 #others .participant-block {
+    height: calc(50% - 12px);
+  }
+}
+@media screen and (min-width: 1600px) and (min-height: 900px) {
+  #app #gallery.pin.size-4 #others::before, #app #gallery.pin.size-5 #others::before {
+    height: calc( 100% * 0.2 );
+  }
+  #app #gallery.pin.size-4 #others .participant-block, #app #gallery.pin.size-5 #others .participant-block {
+    height: calc(30% - 12px);
+  }
+}
+@media screen and (min-width: 1600px) {
+  #app #gallery.pin.size-6 #others::before, #app #gallery.pin.size-7 #others::before {
+    height: 0px;
+    width: calc(100% - 12px);
+  }
+}
+@media screen and (min-width: 1600px) and (min-height: 1000px) {
+  #app #gallery.pin.size-6 #others::before, #app #gallery.pin.size-7 #others::before {
+    height: calc( 100% / 8 );
+  }
+}
+@media screen and (min-width: 1600px) and (min-height: 1300px) {
+  #app #gallery.pin.size-6 #others::before, #app #gallery.pin.size-7 #others::before {
+    height: calc( 100% / 5 );
+  }
+}
+@media screen and (min-width: 1600px) {
+  #app #gallery.pin.size-8 #others::before, #app #gallery.pin.size-9 #others::before {
+    height: 0px;
+    width: calc(100% - 12px);
+  }
+}
+@media screen and (min-width: 1600px) and (min-height: 1300px) {
+  #app #gallery.pin.size-8 #others::before, #app #gallery.pin.size-9 #others::before {
+    height: calc( 100% / 10 );
+  }
+}
+@media screen and (min-width: 1600px) {
+  #app #gallery.pin.size-10 #others::before {
+    height: 0px;
+    width: calc(100% - 12px);
+  }
+}
+#app #gallery.nopin {
+  max-height: calc(100vh - 16px - 64px);
+  overflow-y: scroll;
+}
+#app #gallery.nopin #spotlight {
+  flex: 0;
+}
+#app #gallery.nopin #others {
+  flex: 1;
+  margin: 0;
+}
+#app #gallery.nopin .participant-block {
+  transition: all 0.2s ease-in-out;
+}
+#app #gallery.nopin.size-2 > #others {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+}
+@media screen and (min-width: 1200px) {
+  #app #gallery.nopin.size-2 > #others {
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+#app #gallery.nopin.size-3 > #others {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: repeat(3, 1fr);
+  align-items: center;
+}
+@media screen and (min-width: 1200px) {
+  #app #gallery.nopin.size-3 > #others {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #app #gallery.nopin.size-3 > #others .participant-block:first-child {
+    grid-column: 1/3;
+    justify-self: center;
+    width: 60%;
+  }
+}
+@media screen and (min-width: 1800px) {
+  #app #gallery.nopin.size-3 > #others {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #app #gallery.nopin.size-3 > #others .participant-block:first-child {
+    grid-row: 1/3;
+    grid-column: unset;
+    justify-self: unset;
+    width: auto;
+    height: 80%;
+  }
+}
+@media screen and (min-width: 2400px) {
+  #app #gallery.nopin.size-3 > #others {
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  #app #gallery.nopin.size-3 > #others .participant-block:first-child {
+    grid-row: unset;
+    height: auto;
+  }
+}
+#app #gallery.nopin.size-4 > #others {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: repeat(4, 1fr);
+  align-items: center;
+}
+@media screen and (min-width: 800px) {
+  #app #gallery.nopin.size-4 > #others {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+#app #gallery.nopin.size-5 > #others {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: repeat(5, 1fr);
+}
+@media screen and (min-width: 540px) {
+  #app #gallery.nopin.size-5 > #others {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+  #app #gallery.nopin.size-5 > #others .participant-block:last-child {
+    grid-column: 1/3;
+    justify-self: center;
+    min-width: 500px;
+    width: 60%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #app #gallery.nopin.size-5 > #others {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+  }
+  #app #gallery.nopin.size-5 > #others .participant-block:nth-child(-n+3) {
+    grid-column: span 2;
+  }
+  #app #gallery.nopin.size-5 > #others .participant-block:nth-child(4) {
+    grid-column: 1/4;
+    justify-self: right;
+    width: 70%;
+    min-width: 500px;
+  }
+  #app #gallery.nopin.size-5 > #others .participant-block:nth-child(5) {
+    grid-column: 4/7;
+    justify-self: left;
+    width: 70%;
+    min-width: 500px;
+  }
+}
+#app #gallery.nopin.size-6 > #others {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: repeat(6, 1fr);
+}
+@media screen and (min-width: 300px) {
+  #app #gallery.nopin.size-6 > #others {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #app #gallery.nopin.size-6 > #others {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+#app #gallery.nopin.size-7 > #others {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: repeat(7, 1fr);
+}
+@media screen and (min-width: 400px) {
+  #app #gallery.nopin.size-7 > #others {
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+  #app #gallery.nopin.size-7 > #others .participant-block:last-child {
+    grid-column: 1/3;
+    justify-self: center;
+    min-width: 300px;
+    width: 60%;
+  }
+}
+@media screen and (min-width: 900px) {
+  #app #gallery.nopin.size-7 > #others {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+  }
+  #app #gallery.nopin.size-7 > #others .participant-block:last-child {
+    grid-column: 1/4;
+    justify-self: center;
+    min-width: 500px;
+    width: 45%;
+  }
+}
+@media screen and (min-width: 1440px) {
+  #app #gallery.nopin.size-7 > #others {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(20, 1fr);
+  }
+  #app #gallery.nopin.size-7 > #others .participant-block:nth-child(-n+4) {
+    grid-column: span 5;
+  }
+  #app #gallery.nopin.size-7 > #others .participant-block:nth-child(5) {
+    grid-column: 2/8;
+    justify-self: right;
+    width: 100%;
+    min-width: 0;
+  }
+  #app #gallery.nopin.size-7 > #others .participant-block:nth-child(6) {
+    grid-column: 8/14;
+    justify-self: center;
+    width: 100%;
+    min-width: 0;
+  }
+  #app #gallery.nopin.size-7 > #others .participant-block:nth-child(7) {
+    grid-column: 14/20;
+    justify-self: left;
+    width: 100%;
+    min-width: 0;
+  }
+}
+#app #gallery.nopin.size-8 > #others {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: repeat(8, 1fr);
+}
+@media screen and (min-width: 500px) {
+  #app #gallery.nopin.size-8 > #others {
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 950px) {
+  #app #gallery.nopin.size-8 > #others {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+  }
+  #app #gallery.nopin.size-8 > #others .participant-block:nth-child(-n+6) {
+    grid-column: span 2;
+  }
+  #app #gallery.nopin.size-8 > #others .participant-block:nth-child(7) {
+    grid-column: 1/4;
+    justify-self: right;
+    width: 70%;
+    min-width: 450px;
+  }
+  #app #gallery.nopin.size-8 > #others .participant-block:nth-child(8) {
+    grid-column: 4/7;
+    justify-self: left;
+    width: 70%;
+    min-width: 450px;
+  }
+}
+@media screen and (min-width: 1700px) {
+  #app #gallery.nopin.size-8 > #others {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #app #gallery.nopin.size-8 > #others .participant-block {
+    grid-column: auto !important;
+  }
+  #app #gallery.nopin.size-8 > #others .participant-block:nth-child(7), #app #gallery.nopin.size-8 > #others .participant-block:nth-child(8) {
+    width: 100%;
+    min-width: 0;
+  }
+}
+#app #gallery.nopin.size-9 > #others {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: repeat(9, 1fr);
+}
+@media screen and (min-width: 290px) {
+  #app #gallery.nopin.size-9 > #others {
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+  #app #gallery.nopin.size-9 > #others .participant-block:last-child {
+    grid-column: 1/3;
+    justify-self: center;
+    min-width: 300px;
+    width: 60%;
+  }
+}
+@media screen and (min-width: 840px) {
+  #app #gallery.nopin.size-9 > #others {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+  }
+  #app #gallery.nopin.size-9 > #others .participant-block:last-child {
+    grid-column: unset;
+    width: 100%;
+    min-width: auto;
+  }
+}
+@media screen and (min-width: 1900px) {
+  #app #gallery.nopin.size-9 > #others {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #app #gallery.nopin.size-9 > #others .participant-block:nth-child(-n+8) {
+    grid-column: span 1;
+  }
+  #app #gallery.nopin.size-9 > #others .participant-block:nth-child(9) {
+    grid-column: 1/5;
+    justify-self: center;
+    width: 33%;
+    min-width: 500px;
+  }
+}
+#app #gallery.nopin.size-10 > #others {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: repeat(10, 1fr);
+}
+@media screen and (min-width: 350px) {
+  #app #gallery.nopin.size-10 > #others {
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 900px) {
+  #app #gallery.nopin.size-10 > #others {
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  #app #gallery.nopin.size-10 > #others .participant-block:last-child {
+    grid-column: 1/4;
+    justify-self: center;
+    min-width: 400px;
+    width: 45%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  #app #gallery.nopin.size-10 > #others {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #app #gallery.nopin.size-10 > #others .participant-block:nth-child(9) {
+    grid-column: 1/3;
+    width: 60%;
+    min-width: 400px;
+    justify-self: right;
+  }
+  #app #gallery.nopin.size-10 > #others .participant-block:nth-child(10) {
+    grid-column: 3/5;
+    width: 60%;
+    min-width: 400px;
+    justify-self: left;
+  }
+}
+#app #gallery.nopin.size-11 > #others {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: repeat(11, 1fr);
+}
+@media screen and (min-width: 360px) {
+  #app #gallery.nopin.size-11 > #others {
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+  #app #gallery.nopin.size-11 > #others .participant-block:last-child {
+    grid-column: 1/3;
+    justify-self: center;
+    min-width: 300px;
+    width: 60%;
+  }
+}
+@media screen and (min-width: 800px) {
+  #app #gallery.nopin.size-11 > #others {
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+  }
+  #app #gallery.nopin.size-11 > #others .participant-block:nth-child(-n+9) {
+    grid-column: span 2;
+  }
+  #app #gallery.nopin.size-11 > #others .participant-block:nth-child(10) {
+    grid-column: 1/4;
+    justify-self: right;
+    width: 70%;
+    min-width: 350px;
+  }
+  #app #gallery.nopin.size-11 > #others .participant-block:nth-child(11) {
+    grid-column: 4/7;
+    justify-self: left;
+    width: 70%;
+    min-width: 350px;
+  }
+}
+@media screen and (min-width: 1600px) {
+  #app #gallery.nopin.size-11 > #others {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(20, 1fr);
+  }
+  #app #gallery.nopin.size-11 > #others .participant-block:nth-child(-n+8) {
+    grid-column: span 5;
+  }
+  #app #gallery.nopin.size-11 > #others .participant-block:nth-child(9) {
+    grid-column: 2/8;
+    justify-self: right;
+    width: 100%;
+    min-width: 0;
+  }
+  #app #gallery.nopin.size-11 > #others .participant-block:nth-child(10) {
+    grid-column: 8/14;
+    justify-self: center;
+    width: 100%;
+    min-width: 0;
+  }
+  #app #gallery.nopin.size-11 > #others .participant-block:nth-child(11) {
+    grid-column: 14/20;
+    justify-self: left;
+    width: 100%;
+    min-width: 0;
+  }
+}
+#app #gallery.nopin.size-12 > #others {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: repeat(12, 1fr);
+}
+@media screen and (min-width: 500px) {
+  #app #gallery.nopin.size-12 > #others {
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 800px) {
+  #app #gallery.nopin.size-12 > #others {
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (min-width: 1400px) {
+  #app #gallery.nopin.size-12 > #others {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (min-width: 2000px) {
+  #app #gallery.nopin.size-12 > #others {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+  }
+  #app #gallery.nopin.size-12 > #others .participant-block:nth-child(-n+10) {
+    grid-column: span 2;
+  }
+  #app #gallery.nopin.size-12 > #others .participant-block:nth-child(11) {
+    grid-column: 1/6;
+    justify-self: right;
+    width: 50%;
+    min-width: 450px;
+  }
+  #app #gallery.nopin.size-12 > #others .participant-block:nth-child(12) {
+    grid-column: 6/11;
+    justify-self: left;
+    width: 50%;
+    min-width: 450px;
+  }
+}
+#app #gallery.nopin.size-13 > #others {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: repeat(13, 1fr);
+}
+@media screen and (min-width: 360px) {
+  #app #gallery.nopin.size-13 > #others {
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+  #app #gallery.nopin.size-13 > #others .participant-block:last-child {
+    grid-column: 1/3;
+    justify-self: center;
+    min-width: 300px;
+    width: 60%;
+  }
+}
+@media screen and (min-width: 800px) {
+  #app #gallery.nopin.size-13 > #others {
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+  }
+  #app #gallery.nopin.size-13 > #others .participant-block:last-child {
+    grid-column: 1/4;
+    justify-self: center;
+    min-width: 300px;
+    width: 60%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #app #gallery.nopin.size-13 > #others {
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+  }
+  #app #gallery.nopin.size-13 > #others .participant-block:last-child {
+    grid-column: 1/5;
+    justify-self: center;
+    min-width: 300px;
+    width: 35%;
+  }
+}
+@media screen and (min-width: 2000px) {
+  #app #gallery.nopin.size-13 > #others {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(40, 1fr);
+  }
+  #app #gallery.nopin.size-13 > #others .participant-block:nth-child(-n+10) {
+    grid-column: span 8;
+  }
+  #app #gallery.nopin.size-13 > #others .participant-block:nth-child(11) {
+    grid-column: 6/16;
+    justify-self: right;
+    width: 100%;
+    min-width: 0;
+  }
+  #app #gallery.nopin.size-13 > #others .participant-block:nth-child(12) {
+    grid-column: 16/26;
+    justify-self: center;
+    width: 100%;
+    min-width: 0;
+  }
+  #app #gallery.nopin.size-13 > #others .participant-block:nth-child(13) {
+    grid-column: 26/36;
+    justify-self: left;
+    width: 100%;
+    min-width: 0;
+  }
+}
+#app #gallery.nopin.size-14 > #others {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: repeat(14, 1fr);
+}
+@media screen and (min-width: 500px) {
+  #app #gallery.nopin.size-14 > #others {
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 800px) {
+  #app #gallery.nopin.size-14 > #others {
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+  }
+  #app #gallery.nopin.size-14 > #others .participant-block:nth-child(-n+12) {
+    grid-column: span 2;
+  }
+  #app #gallery.nopin.size-14 > #others .participant-block:nth-child(13) {
+    grid-column: 1/4;
+    justify-self: right;
+    width: 70%;
+    min-width: 350px;
+  }
+  #app #gallery.nopin.size-14 > #others .participant-block:nth-child(14) {
+    grid-column: 4/7;
+    justify-self: left;
+    width: 70%;
+    min-width: 350px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  #app #gallery.nopin.size-14 > #others {
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+  }
+  #app #gallery.nopin.size-14 > #others .participant-block:nth-child(-n+12) {
+    grid-column: span 1;
+  }
+  #app #gallery.nopin.size-14 > #others .participant-block:nth-child(13) {
+    grid-column: 1/3;
+    justify-self: right;
+    width: 55%;
+    min-width: 0px;
+  }
+  #app #gallery.nopin.size-14 > #others .participant-block:nth-child(14) {
+    grid-column: 3/5;
+    justify-self: left;
+    width: 55%;
+    min-width: 0px;
+  }
+}
+@media screen and (min-width: 2000px) {
+  #app #gallery.nopin.size-14 > #others {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(60, 1fr);
+  }
+  #app #gallery.nopin.size-14 > #others .participant-block:nth-child(-n+10) {
+    grid-column: span 12;
+  }
+  #app #gallery.nopin.size-14 > #others .participant-block:nth-child(11) {
+    grid-column: 3/17;
+    width: 100%;
+    min-width: 0;
+  }
+  #app #gallery.nopin.size-14 > #others .participant-block:nth-child(12) {
+    grid-column: 17/31;
+    width: 100%;
+    min-width: 0;
+  }
+  #app #gallery.nopin.size-14 > #others .participant-block:nth-child(13) {
+    grid-column: 31/45;
+    width: 100%;
+    min-width: 0;
+  }
+  #app #gallery.nopin.size-14 > #others .participant-block:nth-child(14) {
+    grid-column: 45/59;
+    width: 100%;
+    min-width: 0;
+  }
+}
+#app #gallery.nopin.size-15 > #others {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-rows: repeat(15, 1fr);
+}
+@media screen and (min-width: 360px) {
+  #app #gallery.nopin.size-15 > #others {
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+  #app #gallery.nopin.size-15 > #others .participant-block:last-child {
+    grid-column: 1/3;
+    justify-self: center;
+    min-width: 300px;
+    width: 60%;
+  }
+}
+@media screen and (min-width: 800px) {
+  #app #gallery.nopin.size-15 > #others {
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  #app #gallery.nopin.size-15 > #others .participant-block:last-child {
+    grid-column: unset;
+    min-width: 0px;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  #app #gallery.nopin.size-15 > #others {
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(40, 1fr);
+    align-items: center;
+  }
+  #app #gallery.nopin.size-15 > #others .participant-block:nth-child(-n+12) {
+    grid-column: span 10;
+  }
+  #app #gallery.nopin.size-15 > #others .participant-block:nth-child(13) {
+    grid-column: 3/15;
+    width: 100%;
+    min-width: 0px;
+  }
+  #app #gallery.nopin.size-15 > #others .participant-block:nth-child(14) {
+    grid-column: 15/27;
+    width: 100%;
+    min-width: 0px;
+  }
+  #app #gallery.nopin.size-15 > #others .participant-block:nth-child(15) {
+    grid-column: 27/39;
+    width: 100%;
+    min-width: 0px;
+  }
+}
+@media screen and (min-width: 2000px) {
+  #app #gallery.nopin.size-15 > #others {
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+  }
+  #app #gallery.nopin.size-15 > #others .participant-block {
+    grid-column: span 1 !important;
+  }
+}
+@media screen and (max-width: 700px) {
+  #app #gallery.nopin .participant-block:nth-child(2n+1) .participant-action-bar .btn-left .btn-hint {
+    transform: translateX(-20px);
+  }
+  #app #gallery.nopin .participant-block:nth-child(2n) .participant-action-bar .btn-right .btn-hint {
+    transform: translateX(calc( -100% + 20px ));
+  }
+}
+@media screen and (max-width: 400px) {
+  #app #gallery.nopin .participant-block:nth-child(2n) .participant-action-bar .btn-left .btn-hint {
+    transform: translateX(-20px);
+  }
+  #app #gallery.nopin .participant-block:nth-child(2n+1) .participant-action-bar .btn-right .btn-hint {
+    transform: translateX(calc( -100% + 20px ));
+  }
+}
+#app #gallery #others > .participant-block {
+  background: #3C4043;
+}
+#app #action-bar {
+  flex: 0 0 80px;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+}
+#app #action-bar #action-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#app #action-bar #action-left #time-text {
+  padding: 0 12px;
+}
+#app #action-bar #action-left #meet-id-text {
+  padding: 0 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#app #action-bar #action-left .divider {
+  display: inline-block;
+  background: #FFFFFF;
+  height: 16px;
+  border-right: 1px solid #FFFFFF;
+}
+#app #action-bar #action-middle {
+  flex: 1;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+#app #action-bar #action-middle .action-button {
+  border-radius: 20px;
+  padding: 0;
+  margin: 0 6px;
+  background: #3C4043;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#app #action-bar #action-middle .action-button label {
+  cursor: pointer;
+  display: block;
+  padding: 8px;
+  height: 40px;
+  width: 40px;
+}
+#app #action-bar #action-middle .action-button label:nth-child(2) {
+  display: none;
+}
+#app #action-bar #action-middle .action-button.act-btn-red {
+  background: #EA4335;
+}
+#app #action-bar #action-middle .action-button.act-btn-red:hover {
+  background: #FF4A3B;
+}
+#app #action-bar #action-middle .action-button.act-btn-red:is(:active,:focus) {
+  background: #FF584A;
+}
+#app #action-bar #action-middle .action-button.act-btn-wide {
+  width: 56px;
+}
+#app #action-bar #action-middle .action-button:hover {
+  background: #434649;
+}
+#app #action-bar #action-middle .action-button:is(:active, :focus) {
+  background: #525659;
+}
+#app #action-bar #action-middle .action-button#mic-button.active, #app #action-bar #action-middle .action-button#cam-button.active {
+  background: #EA4335;
+}
+#app #action-bar #action-middle .action-button#mic-button.active:hover, #app #action-bar #action-middle .action-button#cam-button.active:hover {
+  background: #FF4A3B;
+}
+#app #action-bar #action-middle .action-button#mic-button.active:is(:active,:focus), #app #action-bar #action-middle .action-button#cam-button.active:is(:active,:focus) {
+  background: #FF584A;
+}
+#app #action-bar #action-middle .action-button#mic-button.active label:nth-child(1), #app #action-bar #action-middle .action-button#cam-button.active label:nth-child(1) {
+  display: none;
+}
+#app #action-bar #action-middle .action-button#mic-button.active label:nth-child(2), #app #action-bar #action-middle .action-button#cam-button.active label:nth-child(2) {
+  display: block;
+}
+#app #action-bar #action-right {
+  flex: 1;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  background: #202125;
+}
+#app #action-bar #action-right .option-button {
+  height: 48px;
+  width: 48px;
+  border-radius: 24px;
+  padding: 12px;
+  background: #202125;
+}
+#app #action-bar #action-right .option-button#add-user-option-button :is(svg, svg * , span, span *) {
+  pointer-events: none;
+}
+#app #action-bar #action-right .option-button.active svg {
+  fill: #8AB4F8;
+}
+#app #action-bar #action-right .option-button .corner-text {
+  position: absolute;
+  height: 20px;
+  min-width: 20px;
+  line-height: 20px;
+  padding: 0 4px;
+  background: #5F6368;
+  color: #FFFFFF;
+  border-radius: 10px;
+  top: -5px;
+  left: 25px;
+  font-size: 12px;
+  transition: translateX(-50%);
+  z-index: 99;
+}
+#app #action-bar #action-right .option-button:hover {
+  background: #272A2E;
+}
+#app #action-bar #action-right .option-button:is(:active, :focus) {
+  background: #3C4043;
+}
+#app #action-bar #action-right .option-button:is(:hover, :focus) > .btn-hint {
+  bottom: 52px;
+}
+#app #action-bar #action-right .option-button:last-child:is(:hover, :focus) > .btn-hint {
+  transform: translateX(-75%);
+}
+#app #action-bar #action-right > div {
+  position: relative;
+}
+#app #action-bar #action-right > div .near-popup {
+  display: none;
+  position: absolute;
+  left: 50%;
+  bottom: 52px;
+  transform: translateX(-50%);
+  background: #FFFFFF;
+  border-radius: 8px;
+  width: 300px;
+  text-align: left;
+  z-index: 9999;
+  color: #000000;
+  flex-direction: column;
+}
+#app #action-bar #action-right > div .near-popup.active {
+  display: flex;
+}
+#app #action-bar #action-right > div .near-popup .header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+}
+#app #action-bar #action-right > div .near-popup .header h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+  flex: 1;
+}
+#app #action-bar #action-right > div .near-popup .header .close-button {
+  width: 48px;
+  height: 48px;
+  margin-right: 4px;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  background: #FFFFFF;
+  border-radius: 50%;
+  transition: all 0.1s ease-in-out;
+}
+#app #action-bar #action-right > div .near-popup .header .close-button:hover {
+  background: #F7F7F7;
+}
+#app #action-bar #action-right > div .near-popup .header .close-button:active {
+  background: #EFEFEF;
+}
+#app #action-bar #action-right > div .near-popup .body {
+  padding: 0 16px 8px 16px;
+}
+#app #action-bar #action-right > div .near-popup .body > div.field-body-block {
+  padding-bottom: 10px;
+}
+#app #action-bar #action-right > div .near-popup .body > div.field-body-block span.title {
+  margin: 0px 8px 2px 8px;
+  display: block;
+  font-size: 14px;
+  color: #5F6368;
+}
+#app #action-bar #action-right > div .near-popup .body > div.field-body-block input[type=text] {
+  margin: 4px 0;
+  width: 100%;
+  border-radius: 4px;
+  border: none;
+  background: #F1F3F4;
+  padding: 0 8px;
+  font-size: 16px;
+  line-height: 40px;
+}
+#app #action-bar #action-right > div .near-popup .body > div.field-body-block #add-user-avatar-container {
+  padding: 2px 0px 0px 0px;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+#app #action-bar #action-right > div .near-popup .body > div.field-body-block #add-user-avatar-container input[type=radio] {
+  display: none;
+}
+#app #action-bar #action-right > div .near-popup .body > div.field-body-block #add-user-avatar-container input[type=radio]:checked + div {
+  opacity: 1;
+  border: 3px solid #1A73E8;
+}
+#app #action-bar #action-right > div .near-popup .body > div.field-body-block #add-user-avatar-container div {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  padding: 3px;
+  border: 3px solid #F1F3F4;
+  display: inline-block;
+  opacity: 0.6;
+  transition: all 0.1s ease-in-out;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: none;
+  background-clip: cover;
+  cursor: pointer;
+}
+#app #action-bar #action-right > div .near-popup .footer {
+  text-align: right;
+  padding: 0 10px 10px 10px;
+}
+#app #action-bar #action-right > div .near-popup .footer input[type=reset], #app #action-bar #action-right > div .near-popup .footer button {
+  font-size: 16px;
+  padding: 8px 12px;
+  color: #5F6368;
+  background: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.1s ease-in-out;
+}
+#app #action-bar #action-right > div .near-popup .footer input[type=reset]:hover, #app #action-bar #action-right > div .near-popup .footer button:hover {
+  background: #F7F7F7;
+}
+#app #action-bar #action-right > div .near-popup .footer input[type=reset]:active, #app #action-bar #action-right > div .near-popup .footer button:active {
+  background: #EFEFEF;
+}
+#app #action-bar #action-right > div .near-popup .footer button {
+  color: #1A73E8;
+}
+#app #action-bar #action-toggle {
+  display: none;
+  flex: 0;
+  flex-shrink: 0;
+  background: #202125;
+}
+#app #action-bar #action-toggle .option-button {
+  height: 48px;
+  width: 48px;
+  border-radius: 24px;
+  padding: 12px;
+  background: #202125;
+}
+#app #action-bar #action-toggle .option-button .btn-hint {
+  transform: translateX(-75%);
+}
+#app #action-bar #action-toggle .option-button svg {
+  transition: transform 0.2s ease-in-out;
+}
+#app #action-bar #action-toggle .option-button:hover {
+  background: #272A2E;
+}
+#app #action-bar #action-toggle .option-button:is(:active, :focus) {
+  background: #3C4043;
+}
+#app #action-bar #action-toggle .option-button:is(:hover, :focus) > .btn-hint {
+  bottom: 52px;
+}
+@media screen and (max-width: 650px) {
+  #app #action-bar #action-right {
+    position: absolute;
+    opacity: 0;
+    left: 100%;
+    right: -100%;
+    padding-right: 60px;
+    transition: all 0.3s ease-in-out;
+  }
+  #app #action-bar #action-toggle {
+    display: block;
+    position: relative;
+  }
+  #app #action-bar #action-toggle button > .btn-hint > span:nth-child(1) {
+    display: inline;
+  }
+  #app #action-bar #action-toggle button > .btn-hint > span:nth-child(2) {
+    display: none;
+  }
+  #app #action-bar #action-toggle:after {
+    content: "";
+    position: absolute;
+    background: #202125;
+    top: 0;
+    bottom: 0;
+    left: 48px;
+    right: -12px;
+  }
+  #app #action-bar.active #action-right {
+    left: 0;
+    right: 0;
+    opacity: 1;
+  }
+  #app #action-bar.active #action-toggle button > svg {
+    transform: rotate(180deg);
+  }
+  #app #action-bar.active #action-toggle button > .btn-hint > span:nth-child(1) {
+    display: none;
+  }
+  #app #action-bar.active #action-toggle button > .btn-hint > span:nth-child(2) {
+    display: inline;
+  }
+}
+@media screen and (max-width: 490px) {
+  #app #action-bar #action-right > div .near-popup {
+    transform: translateX(calc(-50% + (490px - 100vw) * 1));
+  }
+}
+#app .action-button, #app .option-button, #app .participant-action-bar > button {
+  cursor: pointer;
+  border: 0;
+  position: relative;
+  transition: all 0.1s ease-in-out;
+  outline: none;
+}
+#app .action-button .btn-hint, #app .option-button .btn-hint, #app .participant-action-bar > button .btn-hint {
+  opacity: 0;
+  background: #3C4340;
+  color: #DCDCDC;
+  padding: 4px 8px;
+  border-radius: 4px;
+  position: absolute;
+  left: 50%;
+  font-size: 14px;
+  font-weight: 300;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  transition: opacity 0.12s ease-in-out 0.5s;
+  z-index: 999;
+}
+#app .action-button .btn-hint:not(.at-bottom), #app .option-button .btn-hint:not(.at-bottom), #app .participant-action-bar > button .btn-hint:not(.at-bottom) {
+  bottom: -9999px;
+}
+#app .action-button .btn-hint.at-bottom, #app .option-button .btn-hint.at-bottom, #app .participant-action-bar > button .btn-hint.at-bottom {
+  top: -9999px;
+}
+#app .action-button:is(:hover, :focus) .btn-hint, #app .option-button:is(:hover, :focus) .btn-hint, #app .participant-action-bar > button:is(:hover, :focus) .btn-hint {
+  transition: all 0 ease-in-out 1s;
+  opacity: 1;
+  outline: none;
+}
+#app .action-button:is(:hover, :focus) .btn-hint:not(.at-bottom), #app .option-button:is(:hover, :focus) .btn-hint:not(.at-bottom), #app .participant-action-bar > button:is(:hover, :focus) .btn-hint:not(.at-bottom) {
+  bottom: 44px;
+}
+#app .action-button:is(:hover, :focus) .btn-hint.at-bottom, #app .option-button:is(:hover, :focus) .btn-hint.at-bottom, #app .participant-action-bar > button:is(:hover, :focus) .btn-hint.at-bottom {
+  top: 44px;
+}
+#app #ntf-container {
+  pointer-events: none;
+  position: fixed;
+  top: -90px;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  padding-top: 16px;
+  transition: all 0.15s ease-in;
+}
+#app #ntf-container #ntf-body {
+  background: white;
+  margin: 0 auto;
+  padding: 12px;
+  width: 90%;
+  max-width: 300px;
+  border-radius: 8px;
+  display: flex;
+  color: black;
+  align-items: center;
+}
+#app #ntf-container #ntf-body #ntf-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+#app #ntf-container #ntf-body #ntf-content {
+  margin-left: 12px;
+}
+#app #ntf-container #ntf-body #ntf-content > * {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#app #ntf-container #ntf-body #ntf-content #ntf-title {
+  font-size: 20px;
+}
+#app #ntf-container #ntf-body #ntf-content #ntf-subtitle {
+  font-size: 14px;
+}
+#app #ntf-container.unhide {
+  top: 0;
+  transition: all 0.15s ease-out;
+}
+#app #ntf-container.error #ntf-body {
+  justify-content: center;
+}
+#app #ntf-container.error #ntf-body #ntf-image {
+  display: none;
+}
+#app #ntf-container.error #ntf-body #ntf-content {
+  text-align: center;
+  margin-left: 0;
+}

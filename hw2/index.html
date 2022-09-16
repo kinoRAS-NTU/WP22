@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>HW-EEWP-002</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="app">
+    <div id="ntf-container">
+        <div id="ntf-body">
+            <img id="ntf-image" src="./image/tomm.png">
+            <div id="ntf-content">
+                <span id="ntf-title">Tom</span>
+                <span id="ntf-subtitle">已被加入會議</span>
+            </div>
+        </div>
+    </div>
+    <div id="gallery">
+        <div id="spotlight"></div>
+        <div id="others"></div>
+    </div>
+    <div id="action-bar">
+        <div id="action-left">
+            <span id="time-text">上午 10:00</span>
+            <div class="divider"></div>
+            <span id="meet-id-text">Web Programming</span>
+        </div>
+        <div id="action-middle">
+            <button class="action-button active" id="mic-button" onclick="this.blur(); handleChangeMic();">
+                <label>
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF">
+                        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"></path>
+                        <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"></path>
+                    </svg>
+                    <span class="btn-hint">關閉麥克風 (⌘ + D)</span>
+                </label>
+                <label>
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF">
+                       <path d="M0 0h24v24H0zm0 0h24v24H0z" fill="none"></path>
+                       <path d="M19 11h-1.7c0 .74-.16 1.43-.43 2.05l1.23 1.23c.56-.98.9-2.09.9-3.28zm-4.02.17c0-.06.02-.11.02-.17V5c0-1.66-1.34-3-3-3S9 3.34 9 5v.18l5.98 5.99zM4.27 3L3 4.27l6.01 6.01V11c0 1.66 1.33 3 2.99 3 .22 0 .44-.03.65-.08l1.66 1.66c-.71.33-1.5.52-2.31.52-2.76 0-5.3-2.1-5.3-5.1H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c.91-.13 1.77-.45 2.54-.9L19.73 21 21 19.73 4.27 3z"></path>
+                    </svg>
+                    <span class="btn-hint">開啟麥克風 (⌘ + D)</span>
+                </label>
+            </button>
+            <button class="action-button active" id="cam-button" onclick="this.blur(); handleChangeCam();">
+                <label>
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF">
+                        <path d="M18 10.48V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4.48l4 3.98v-11l-4 3.98zm-2-.79V18H4V6h12v3.69z"></path>
+                    </svg>
+                    <span class="btn-hint">關閉攝影機 (⌘ + E)</span>
+                </label>
+                <label>
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF">
+                       <path d="M18 10.48V6c0-1.1-.9-2-2-2H6.83l2 2H16v7.17l2 2v-1.65l4 3.98v-11l-4 3.98zM16 16L6 6 4 4 2.81 2.81 1.39 4.22l.85.85C2.09 5.35 2 5.66 2 6v12c0 1.1.9 2 2 2h12c.34 0 .65-.09.93-.24l2.85 2.85 1.41-1.41L18 18l-2-2zM4 18V6.83L15.17 18H4z"></path>
+                    </svg>
+                    <span class="btn-hint">開啟攝影機 (⌘ + E)</span>
+                </label>
+            </button>
+            <button class="action-button" onclick="this.blur()">
+                <label>
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF">
+                        <path d="M13 24q-2.575 0-4.7-1.438-2.125-1.437-3.075-3.837L2.675 12.3q-.1-.25-.137-.463-.038-.212-.038-.487 0-.75.575-1.325T4.4 9.45q.175 0 .313.012.137.013.287.063l.775.2q.35.1.65.262.3.163.575.413V4.5q0-1.05.725-1.775Q8.45 2 9.5 2q.15 0 .288.012.137.013.262.038.15-.95.863-1.5Q11.625 0 12.5 0q.8 0 1.425.438.625.437.9 1.162.175-.05.338-.075.162-.025.337-.025 1.05 0 1.775.725Q18 2.95 18 4v.55q.125-.025.25-.038.125-.012.25-.012 1.05 0 1.775.725Q21 5.95 21 7v9q0 3.35-2.325 5.675Q16.35 24 13 24Zm0-2q2.5 0 4.25-1.75T19 16V7q0-.2-.15-.35-.15-.15-.35-.15-.2 0-.35.15Q18 6.8 18 7v5h-2V4q0-.2-.15-.35-.15-.15-.35-.15-.2 0-.35.15Q15 3.8 15 4v8h-2V2.5q0-.2-.15-.35Q12.7 2 12.5 2q-.2 0-.35.15-.15.15-.15.35V12h-2V4.5q0-.2-.15-.35Q9.7 4 9.5 4q-.2 0-.35.15Q9 4.3 9 4.5V15H7l-.975-2.5q-.175-.425-.487-.625-.313-.2-1.038-.425L7.1 18q.725 1.8 2.338 2.9Q11.05 22 13 22Z"/>
+                    </svg>
+                    <span class="btn-hint">舉手</span>
+                </label>
+            </button>
+            <button class="action-button" onclick="this.blur()">
+                <label>
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF">
+                        <path d="M11 16h2v-4.15l1.6 1.575L16.025 12 12 8l-4 4 1.425 1.4L11 11.825Zm-7 4q-.825 0-1.412-.587Q2 18.825 2 18V6q0-.825.588-1.412Q3.175 4 4 4h16q.825 0 1.413.588Q22 5.175 22 6v12q0 .825-.587 1.413Q20.825 20 20 20Zm0-2h16V6H4v12Zm0 0V6v12Z"/>
+                    </svg>
+                    <span class="btn-hint">立即分享螢幕畫面</span>
+                </label>
+            </button>
+            <button class="action-button" onclick="this.blur()">
+                <label>
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF">
+                        <path d="M12 20q-.825 0-1.412-.587Q10 18.825 10 18q0-.825.588-1.413Q11.175 16 12 16t1.413.587Q14 17.175 14 18q0 .825-.587 1.413Q12.825 20 12 20Zm0-6q-.825 0-1.412-.588Q10 12.825 10 12t.588-1.413Q11.175 10 12 10t1.413.587Q14 11.175 14 12q0 .825-.587 1.412Q12.825 14 12 14Zm0-6q-.825 0-1.412-.588Q10 6.825 10 6t.588-1.412Q11.175 4 12 4t1.413.588Q14 5.175 14 6t-.587 1.412Q12.825 8 12 8Z"/>
+                    </svg>
+                    <span class="btn-hint">更多選項</span>
+                </label>
+            </button>
+            <button class="action-button act-btn-red act-btn-wide" onclick="this.blur()">
+                <label>
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF">
+                        <path d="M12 8q2.95 0 5.812 1.188 2.863 1.187 5.088 3.562.3.3.3.7 0 .4-.3.7l-2.3 2.25q-.275.275-.637.3-.363.025-.663-.2l-2.9-2.2q-.2-.15-.3-.35-.1-.2-.1-.45v-2.85q-.95-.3-1.95-.475T12 10q-1.05 0-2.05.175-1 .175-1.95.475v2.85q0 .25-.1.45t-.3.35l-2.9 2.2q-.3.225-.662.2-.363-.025-.638-.3l-2.3-2.25q-.3-.3-.3-.7 0-.4.3-.7 2.2-2.375 5.075-3.562Q9.05 8 12 8Z"/></svg>
+                    </svg>
+                    <span class="btn-hint">退出通話</span>
+                </label>
+            </button>
+        </div>
+        <div id="action-right">
+            <div>
+                <button class="option-button" id="add-user-option-button" onclick="handleOpenAddUser(event)">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF">
+                        <path d="M18.1 13.75V10.8h-2.95V8.7h2.95V5.75h2.1V8.7h2.95v2.1H20.2v2.95ZM9.025 11.9q-1.725 0-2.963-1.238Q4.825 9.425 4.825 7.7q0-1.75 1.237-2.975Q7.3 3.5 9.025 3.5q1.75 0 2.987 1.225Q13.25 5.95 13.25 7.7q0 1.725-1.238 2.962Q10.775 11.9 9.025 11.9Zm-8.2 8.4v-3q0-.925.475-1.675t1.25-1.15q1.575-.8 3.188-1.188Q7.35 12.9 9.025 12.9q1.7 0 3.325.387 1.625.388 3.175 1.163.775.4 1.25 1.163.475.762.475 1.687v3ZM3.1 18.025h11.875v-.7q0-.275-.137-.5-.138-.225-.363-.325-1.325-.675-2.687-1-1.363-.325-2.763-.325-1.375 0-2.75.325t-2.675 1q-.225.1-.363.325-.137.225-.137.5Zm5.925-8.4q.8 0 1.375-.563.575-.562.575-1.362T10.4 6.337q-.575-.562-1.375-.562-.775 0-1.35.562Q7.1 6.9 7.1 7.7t.575 1.362q.575.563 1.35.563Zm0-1.925Zm0 7.475Z"/>
+                    </svg>
+                    <span class="btn-hint" onclick="event.stopPropagation()">增加使用者</span>
+                </button>
+                <form class="near-popup" id="add-user-form">
+                    <div class="header">
+                        <h3>增加成員</h3>
+                        <div class="close-button" onclick="handleCloseAddUser()">
+                            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#5F6368"><path d="M6.4 19 5 17.6l5.6-5.6L5 6.4 6.4 5l5.6 5.6L17.6 5 19 6.4 13.4 12l5.6 5.6-1.4 1.4-5.6-5.6Z"/></svg>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="field-body-block">
+                            <span class="title">名稱</span>
+                            <input type="text" id="add-user-name-field">
+                        </div>
+                        <div class="field-body-block">
+                            <span class="title">頭貼</span>
+                            <div id="add-user-avatar-container"></div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <input type="reset" value="清除">
+                        <button onclick="event.preventDefault(); handleSubmitAddUser()">新增</button>
+                    </div>
+                </form>
+            </div>
+            <button class="option-button" onclick="this.blur()">
+                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF">
+                    <path d="M10.9 17.1h2.2V11h-2.2ZM12 9.125q.475 0 .8-.325.325-.325.325-.8 0-.475-.325-.8-.325-.325-.8-.325-.475 0-.8.325-.325.325-.325.8 0 .475.325.8.325.325.8.325ZM12 22.2q-2.125 0-3.988-.8-1.862-.8-3.237-2.175Q3.4 17.85 2.6 15.988 1.8 14.125 1.8 12t.8-3.988q.8-1.862 2.175-3.237Q6.15 3.4 8.012 2.6 9.875 1.8 12 1.8t3.988.8q1.862.8 3.237 2.175Q20.6 6.15 21.4 8.012q.8 1.863.8 3.988t-.8 3.988q-.8 1.862-2.175 3.237Q17.85 20.6 15.988 21.4q-1.863.8-3.988.8Zm0-2.275q3.325 0 5.625-2.3t2.3-5.625q0-3.325-2.3-5.625T12 4.075q-3.325 0-5.625 2.3T4.075 12q0 3.325 2.3 5.625t5.625 2.3ZM12 12Z"/>
+                </svg>
+                <span class="btn-hint">會議詳細資料</span>
+            </button>
+            <button class="option-button" onclick="this.blur()">
+                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF">
+                    <path d="M.825 20.3v-3q0-.925.463-1.675.462-.75 1.237-1.15 1.575-.8 3.2-1.188 1.625-.387 3.3-.387 1.675 0 3.3.387 1.625.388 3.175 1.163.775.4 1.25 1.163.475.762.475 1.687v3Zm18.475 0v-3.2q0-1.125-.6-2.162-.6-1.038-1.75-1.863 1.225.175 2.3.525 1.075.35 2.025.85.925.5 1.413 1.187.487.688.487 1.488V20.3ZM9.025 11.9q-1.7 0-2.9-1.2t-1.2-2.9q0-1.7 1.2-2.9t2.9-1.2q1.7 0 2.9 1.2t1.2 2.9q0 1.7-1.2 2.9t-2.9 1.2ZM19.3 7.8q0 1.7-1.2 2.9t-2.9 1.2q-.275 0-.687-.063-.413-.062-.713-.162.675-.8 1.038-1.8.362-1 .362-2.075 0-1.075-.362-2.075-.363-1-1.038-1.8.35-.15.7-.188.35-.037.7-.037 1.7 0 2.9 1.2t1.2 2.9ZM3.1 18.025h11.85v-.7q0-.275-.138-.5-.137-.225-.362-.325-1.325-.675-2.675-1-1.35-.325-2.75-.325t-2.762.325q-1.363.325-2.663 1-.225.1-.363.325-.137.225-.137.5Zm5.925-8.3q.775 0 1.338-.563.562-.562.562-1.362t-.562-1.362q-.563-.563-1.338-.563-.8 0-1.363.563Q7.1 7 7.1 7.8q0 .775.562 1.35.563.575 1.363.575Zm0 8.3Zm0-10.225Z"/>
+                </svg>
+                <span class="btn-hint">顯示所有參與者</span>
+                <span class="corner-text" id="user-count-text">0</span>
+            </button>
+            <button class="option-button" onclick="this.blur()">
+                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF">
+                    <path d="M6 14h8v-2H6Zm0-3h12V9H6Zm0-3h12V6H6ZM1.8 22.2V4.075q0-.95.662-1.613.663-.662 1.613-.662h15.85q.95 0 1.613.662.662.663.662 1.613v11.85q0 .95-.662 1.613-.663.662-1.613.662H5.8Zm2.275-5.3.95-.975h14.9V4.075H4.075Zm0-12.825V16.9Z"/>
+                </svg>
+                <span class="btn-hint">與所有參與者進行即時通訊</span>
+            </button>
+            <button class="option-button" onclick="this.blur()">
+                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF">
+                   <path d="m6.15 11.225 5.85-9.6 5.85 9.6Zm11.525 11.15q-1.975 0-3.337-1.375-1.363-1.375-1.363-3.325 0-1.975 1.363-3.338 1.362-1.362 3.337-1.362 1.95 0 3.325 1.362 1.375 1.363 1.375 3.338 0 1.95-1.375 3.325-1.375 1.375-3.325 1.375Zm-15.125-.5v-8.4h8.4v8.4ZM17.675 20.1q1 0 1.713-.712.712-.713.712-1.713 0-1.025-.712-1.725-.713-.7-1.713-.7-1.025 0-1.725.7-.7.7-.7 1.725 0 1 .7 1.713.7.712 1.725.712Zm-12.85-.5h3.85v-3.85h-3.85ZM10.2 8.95h3.6L12 6Zm1.8 0Zm-3.325 6.8Zm9 1.925Z"/>
+                </svg>
+                <span class="btn-hint">活動</span>
+            </button>
+            <button class="option-button" onclick="this.blur()">
+                <img src="https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/lock_person/default/24px.svg" style="filter:invert(1)">
+                <span class="btn-hint">主辦人控制項</span>
+            </button>
+        </div>
+        <div id="action-toggle">
+            <button class="option-button" onclick="this.blur(); handleToggleActionRight()";>
+                <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M16 22 6 12 16 2l1.775 1.775L9.55 12l8.225 8.225Z"/></svg>
+                <span class="btn-hint"><span>展開工具列</span><span>收起工具列</span></span>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- partial -->
+  <script src="./main.js"></script>
+
+</body>
+</html>
