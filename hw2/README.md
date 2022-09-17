@@ -49,6 +49,8 @@
 
 ## 04 RWD 解析
 ![RWD Explanation](https://github.com/kinoras/wp1111/blob/main/hw2/image/descr01.png)
+
+## 05 JavaScript 程式簡介
 ![Brief Explanation on JavaScript](https://github.com/kinoras/wp1111/blob/main/hw2/image/descr02.png)
 
-最後更新：2022-09-17 17:29
+最後更新：2022-09-17 17:30
