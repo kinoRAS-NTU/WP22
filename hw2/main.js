@@ -31,14 +31,14 @@ let userCandidateList = [
 { name: 'Helesta',  avatar: './image/hele.webp' }];
 
 let addUserCandidateList = [
-{ name: 'NaraNeko', avatar: './image/nek1.jpg' },
-{ name: 'NaraNeko', avatar: './image/nek2.jpg' },
-{ name: 'NaraNeko', avatar: './image/nek3.jpg' },
-{ name: 'NaraNeko', avatar: './image/nek4.jpg' },
-{ name: 'NaraNeko', avatar: './image/nek5.jpg' },
-{ name: 'NaraNeko', avatar: './image/nek6.jpg' },
-{ name: 'NaraNeko', avatar: './image/nek7.jpg' },
-{ name: 'NaraNeko', avatar: './image/nek8.jpg' }];
+{ name: 'NoraNeko', avatar: './image/nek1.jpg' },
+{ name: 'NoraNeko', avatar: './image/nek2.jpg' },
+{ name: 'NoraNeko', avatar: './image/nek3.jpg' },
+{ name: 'NoraNeko', avatar: './image/nek4.jpg' },
+{ name: 'NoraNeko', avatar: './image/nek5.jpg' },
+{ name: 'NoraNeko', avatar: './image/nek6.jpg' },
+{ name: 'NoraNeko', avatar: './image/nek7.jpg' },
+{ name: 'NoraNeko', avatar: './image/nek8.jpg' }];
 
 // Initialize
 function initAppendUser() {

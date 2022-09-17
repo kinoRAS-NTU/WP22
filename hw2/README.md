@@ -53,4 +53,4 @@
 ## 05 JavaScript 程式簡介
 ![Brief Explanation on JavaScript](https://github.com/kinoras/wp1111/blob/main/hw2/image/descr02.png)
 
-最後更新：2022-09-17 17:30
+最後更新：2022-09-17 19:35
