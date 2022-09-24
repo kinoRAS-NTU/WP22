@@ -48,9 +48,9 @@
 - 最多僅支援 15 位使用者 (含自己)
 
 ## 04 RWD 解析
-![RWD Explanation](https://github.com/kinoras/wp1111/blob/main/hw2/image/descr01.png)
+![RWD Explanation](./image/descr01.png)
 
 ## 05 JavaScript 程式簡介
-![Brief Explanation on JavaScript](https://github.com/kinoras/wp1111/blob/main/hw2/image/descr02.png)
+![Brief Explanation on JavaScript](./image/descr02.png)
 
 最後更新：2022-09-17 19:35
