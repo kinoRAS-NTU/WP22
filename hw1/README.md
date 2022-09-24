@@ -39,6 +39,6 @@
 - 滑鼠游標移至按鈕上及按下按鈕時，有不同的回饋效果
 
 ## 響應式設計 (Responsive Design)
-![Responsive Design Details](https://github.com/kinoras/wp1111/blob/main/hw1/images/HW-EEWP-001-P1.png)
+![Responsive Design Details](./images/HW-EEWP-001-P1.png)
 
 最後更新：2022-09-07 20:46
