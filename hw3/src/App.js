@@ -1,7 +1,6 @@
-// import './App.scss';
 import { Component } from 'react'
 import removeIcon from './assets/remove.png'
-import './init.scss'
+import './App.scss'
 
 class App extends Component {
     constructor () {
@@ -35,7 +34,7 @@ class App extends Component {
                                 default: return true
                             }
                         }).map( (item) => 
-                            <li className="todo-app__item" key={ 'todo-b' + item.id }>
+                            <li className="todo-app__item" id={ 'todo-b' + item.id } key={ 'todo-b' + item.id }>
                                 <div className="todo-app__checkbox">
                                     <input type="checkbox" id={ 'todo-c' + item.id } defaultChecked={item.done} onClick={ this.handleTodoDoneChange }/>
                                     <label htmlFor={ 'todo-c' + item.id }></label>
@@ -65,30 +64,42 @@ class App extends Component {
     }
 
     handleAddTodo (e) {
+        const todoList = document.getElementById('todo-list')
+        const thisUserId = this.getRandomIdentifier()
         this.setState({
             todos: [...this.state.todos, {
-                id: this.getRandomIdentifier(),
+                id: thisUserId,
                 name: e.target.value,
                 done: false
             }]
+        }, () => {
+            document.getElementById('todo-b' + thisUserId).classList.add('appending')
+            setTimeout(()=>{document.getElementById('todo-b' + thisUserId).classList.remove('appending')}, 0)
+            setTimeout(()=>{todoList.scrollTo({top: todoList.scrollHeight, behavior: 'smooth'})}, 130)
         })
-        e.target.value = ''
+        e.target.value = ''        
     }
 
     handleTodoDoneChange (e) {
-        const changeId = this.getIndexByIdentifier(e.target.id.replace('todo-c',''))
-        let todos = [...this.state.todos]
-        let todo = {...todos[changeId]}
+        const changeId = e.target.id.replace('todo-c','')
+        const changeIdx = this.getIndexByIdentifier(changeId)
+        let todos = this.state.todos
+        let todo = todos[changeIdx]
         todo.done = !todo.done
-        todos[changeId] = todo
+        todos[changeIdx] = todo
         this.setState({todos})
     }
 
     handleRemoveTodo (e) {
-        const removeId = this.getIndexByIdentifier(e.target.id.replace('todo-r',''))
-        let todos = [...this.state.todos]
-        todos.splice(removeId, 1)
-        this.setState({todos})
+        const removeId = e.target.id.replace('todo-r','')
+        const removeIdx = this.getIndexByIdentifier(removeId)
+        const elemRemoving = document.getElementById('todo-b' + removeId)
+        let todos = this.state.todos
+        todos.splice(removeIdx, 1)
+        elemRemoving.classList.add('removing')
+        setTimeout(() => {
+            this.setState({todos})
+        }, 300)
     }
 
     handleChangeView (e) {
@@ -98,9 +109,14 @@ class App extends Component {
     }
 
     handleRemoveDoneTodo () {
-        let todos = [...this.state.todos]
+        let todos = this.state.todos
+        todos.filter(e => { return e.done }).forEach(e => {
+            document.getElementById('todo-b' + e.id).classList.add('removing')
+        });
         todos = todos.filter(e => { return !e.done })
-        this.setState({todos})
+        setTimeout(() => {
+            this.setState({todos})
+        }, 300)
     }
 
     getRandomIdentifier () { return Math.random().toString(36).substring(2,8) }
@@ -116,6 +132,7 @@ class App extends Component {
             }
         })
     }
+
 }
 
 export default App
