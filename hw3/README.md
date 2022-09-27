@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# HW3: React Todo Exercise
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+同學你好！以下是此份作業的完成情況及簡介，請參考。
 
-## Available Scripts
+## 01 安裝並運行
 
-In the project directory, you can run:
+評閱本作業前，請先使用指令 `npm install` 安裝所需模組。
 
-### `npm start`
+安裝完成後，使用 `npm start` 進入開發模式 (Development Mode)。 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+之後，開啟 [http://localhost:3000](http://localhost:3000) 以在瀏覧器中預覽運行結果。
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 02 已完成的基本要求
+- 初始時沒有待辦事項；
+- 按 [Enter] 將新的待辦事項新增至最末處，預設狀態為未完成；
+- 按 Checkbox 可以切換待辦事項的完成狀態；
+- 有待辦事項時，會顯示 Footer。
 
-### `npm test`
+## 03 已完成的進階要求
+- 滑鼠停在待辦事項上時，出現移除事項按鈕；
+- 按下移除按鈕時，刪除該待辦事項，更新左下方未完成待辦事項計數；
+- 沒有待辦事項時，界面回復初始狀態；
+- Footer 中間有切換視圖按鈕，按下後會顯示相應種類的待辦事項；
+- 有已完成的待辦事項時，才顯示 [Clear Completed] 按鈕；
+- 按下 [Clear Completed] 時清除已完成的待辦事項。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 04 其他設計
+- 待辦事項新增及刪除時、Footer 顯示或隱藏時，有動畫效果；
+- 新增待辦事項時，會自動滑動至最新的待辦事項；
+- Footer 的切換視圖按鈕中，目前視圖按鈕背景顏色更深且有邊框提示；
+- 對版面尺寸稍作修改，使其適合更多裝置的大小。
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+最後更新：2022-09-28 00:14

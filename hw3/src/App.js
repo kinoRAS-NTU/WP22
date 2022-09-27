@@ -75,7 +75,7 @@ class App extends Component {
         }, () => {
             document.getElementById('todo-b' + thisUserId).classList.add('appending')
             setTimeout(()=>{document.getElementById('todo-b' + thisUserId).classList.remove('appending')}, 0)
-            setTimeout(()=>{todoList.scrollTo({top: todoList.scrollHeight, behavior: 'smooth'})}, 130)
+            setTimeout(()=>{todoList.scrollTo({top: todoList.scrollHeight, behavior: 'smooth'})}, 150)
         })
         e.target.value = ''        
     }
