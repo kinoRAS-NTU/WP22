@@ -14,6 +14,7 @@ class App extends Component {
         this.handleRemoveDoneTodo = this.handleRemoveDoneTodo.bind(this)
         this.handleTodoDoneChange = this.handleTodoDoneChange.bind(this)
         this.handleChangeView = this.handleChangeView.bind(this)
+        this.getTodos = this.getTodos.bind(this)
         this.getRandomIdentifier = this.getRandomIdentifier.bind(this)
     }
 
@@ -26,14 +27,7 @@ class App extends Component {
                 <section className="todo-app__main">
                     <input type="text" className="todo-app__input" placeholder="What needs to be done?" />
                     <ul className="todo-app__list" id="todo-list">{
-                        this.state.todos
-                        .filter(e => {
-                            switch (this.state.currPage) {
-                                case 'act': return !e.done
-                                case 'cpt': return e.done
-                                default: return true
-                            }
-                        }).map( (item) => 
+                        this.getTodos(this.state.currPage).map((item) => 
                             <li className="todo-app__item" id={ 'todo-b' + item.id } key={ 'todo-b' + item.id }>
                                 <div className="todo-app__checkbox">
                                     <input type="checkbox" id={ 'todo-c' + item.id } defaultChecked={item.done} onClick={ this.handleTodoDoneChange }/>
@@ -103,9 +97,17 @@ class App extends Component {
     }
 
     handleChangeView (e) {
-        this.setState({
-            currPage: e.target.name.replace('ftr-btn-', '')
-        })
+        const newCurrPage = e.target.name.replace('ftr-btn-', '')
+        const todoListElem = document.getElementById('todo-list')
+        todoListElem.style.height = this.getTodos(this.state.currPage).length * 70 + 'px'
+        setTimeout(() => {
+            todoListElem.style.height = this.getTodos(newCurrPage).length * 70 + 'px'
+            this.setState({
+                currPage: newCurrPage
+            }, () => {setTimeout(() => {
+                todoListElem.style.removeProperty("height")
+            }, 200)})
+        }, 0)
     }
 
     handleRemoveDoneTodo () {
@@ -117,6 +119,16 @@ class App extends Component {
         setTimeout(() => {
             this.setState({todos})
         }, 300)
+    }
+
+    getTodos (type) {
+        return this.state.todos.filter(e => {
+            switch (type) {
+                case 'act': return !e.done
+                case 'cpt': return e.done
+                default: return true
+            }
+        })
     }
 
     getRandomIdentifier () { return Math.random().toString(36).substring(2,8) }

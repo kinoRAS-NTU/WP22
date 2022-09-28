@@ -64,6 +64,7 @@ input[type='checkbox'] { visibility: hidden; }
         margin: 0;
         max-height: calc(100vh - 290px);
         overflow: scroll;
+        transition: height .2s ease-in-out;
         .todo-app__item {
             position: relative;
             width: 100%;
