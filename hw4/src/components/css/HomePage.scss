@@ -1,0 +1,142 @@
+/****************************************************************************
+  FileName      [ HomePage.css ]
+  PackageName   [ src/components/css ]
+  Author        [ Cheng-Hua Lu ]
+  Synopsis      [ This file set the style of HomePage. ]
+  Copyright     [ 2022 10 ]
+****************************************************************************/
+
+* {
+    font-family: 'Futura';
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 20px;
+}
+
+.HomeWrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.title {
+    font-size: 75px;
+    font-family: 'Futura';
+    font-weight: 900;
+    padding-top: calc( 50px + 1em );
+    padding-bottom: 1em;
+    margin: 0;
+    color: #0f0f4b;
+}
+
+.btn {
+    font-size: 30px;
+    padding: 10px 30px;
+    border: transparent;
+    border-radius: 25px;
+    margin: 20px auto;
+    color: #0f0f4b;
+    background-color: lightblue;
+    border: 3px solid #0f0f4b;
+    &:hover {
+        cursor: pointer;
+        background-color: #0f0f4b;
+        color: lightblue;
+        border: 3px solid transparent;
+    }
+    &:disabled {
+        opacity: .5;
+        cursor: not-allowed;
+    }
+}
+
+.controlContainer {
+    .controlWrapper {
+        background-color: lightblue;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: max-height .2s ease-in-out;
+        max-height: 500px;
+        max-width: 90%;
+        margin: 0 auto;
+        > * {
+            opacity: 1;
+            transition: opacity .2s ease-in-out .05s;
+        }
+        &.hidden {
+            max-height: 0;
+            transition: max-height .2s ease-in-out .05s;
+            > * {
+                opacity: 0;
+                transition: opacity .2s ease-in-out;
+            }
+        }
+        .error {
+            width: 100%;
+            font-size: 20px;
+            font-weight: 300;
+            padding: 20px 20px 0 20px;
+            max-height: 0px;
+            overflow: hidden;
+            color: #880000;
+            opacity: 0;
+            transition: max-height .2s ease-in-out .2s, opacity .2s ease-in-out;
+            &.has-error{
+                max-height: 100px;
+                opacity: 1;
+                transition: max-height .2s ease-in-out, opacity .2s ease-in-out .2s;
+            }
+        }
+        .controlPanel {
+            display: flex;
+            justify-content: space-around;
+            padding: 0 20px 20px 20px;
+            .controlCol {
+                display: inline-block;
+                width: 40%;
+                .controlTitle {
+                    font-size: 25px;
+                    color: #0f0f4b;
+                }
+                .inputSlider {
+                    outline: 0;
+                    border: 0;
+                    border-radius: 500px;
+                }
+                .controlNum {
+                    font-size: 20px;
+                    color: #0f0f4b;
+                    &.has-error{ color: #880000; }
+                }
+            }
+        }
+    }
+}
+
+/* Chrome */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+        -webkit-appearance: none !important;
+        width: 400px;
+        height: 5px;
+        background-color: #0f0f4b;
+        border: none;
+        outline: none;
+    }
+
+    input[type='range']::-webkit-slider-thumb {
+        -webkit-appearance: none !important;
+        height: 20px;
+        width: 20px;
+        background: white;
+        border: 2px solid #0f0f4b;
+        border-radius: 50%;
+        cursor: ew-resize;
+    }
+
+    input[type='range']::-webkit-slider-thumb:hover {
+        background: #0f0f4b;
+    }
+
+}
