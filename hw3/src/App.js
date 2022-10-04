@@ -59,17 +59,20 @@ class App extends Component {
 
     handleAddTodo (e) {
         const todoList = document.getElementById('todo-list')
-        const thisUserId = this.getRandomIdentifier()
+        const thisTodoId = this.getRandomIdentifier()
         this.setState({
             todos: [...this.state.todos, {
-                id: thisUserId,
+                id: thisTodoId,
                 name: e.target.value,
                 done: false
             }]
         }, () => {
-            document.getElementById('todo-b' + thisUserId).classList.add('appending')
-            setTimeout(()=>{document.getElementById('todo-b' + thisUserId).classList.remove('appending')}, 0)
-            setTimeout(()=>{todoList.scrollTo({top: todoList.scrollHeight, behavior: 'smooth'})}, 150)
+            const thisTodoElem = document.getElementById('todo-b' + thisTodoId)
+            if ( thisTodoElem ) {
+                thisTodoElem.classList.add('appending')
+                setTimeout(()=>{thisTodoElem.classList.remove('appending')}, 0)
+                setTimeout(()=>{todoList.scrollTo({top: todoList.scrollHeight, behavior: 'smooth'})}, 150)
+            }
         })
         e.target.value = ''        
     }
