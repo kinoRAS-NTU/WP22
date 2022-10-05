@@ -15,7 +15,10 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     const [remainFlagNum, setRemainFlagNum] = useState(0);      // An integer variable to store the number of remain flags.
     const [win, setWin] = useState(false);                      // A boolean variable. If true, means that you win the game.
 
-    useEffect(() => { freshBoard() }, [])
+    useEffect(() => {
+        setTimeout(() => {document.getElementsByClassName('boardContainer')[0].classList.remove('hidden')}, 0)
+        freshBoard()
+    }, [])
     useEffect(() => { !nonMineCount && setWin(true) }, [nonMineCount])
 
     // Creating a board
@@ -56,13 +59,19 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
             mineLocations.filter(m => !board[m[0]][m[1]].flagged)
                          .forEach(m => board[m[0]][m[1]].revealed = true)
         }
-
     };
+
+    const handleBackToHome = () => {
+        setTimeout(() => {
+            document.getElementsByClassName('boardContainer')[0].classList.add('hidden')
+            setTimeout(() => { backToHome() }, 200)
+        }, 200)
+    }
 
     return (
         <div className='boardPage'>
             <div className='boardWrapper'>
-                <div className="boardContainer">
+                <div className="boardContainer hidden">
                     <Dashboard remainFlagNum={remainFlagNum} gameOver={gameOver} win={win}/>
                     {board !== [] && board.map((row, i) => 
                         <div id={'row' + i} key={'r' + i} className="boardRow"> {row.map((col, j) => 
@@ -72,7 +81,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                     )}
                 </div>
             </div>
-            <Modal restartGame={restartGame} backToHome={backToHome} gameOver={gameOver} win={win}/>
+            <Modal restartGame={restartGame} backToHome={handleBackToHome} gameOver={gameOver} win={win}/>
         </div>
     );
 

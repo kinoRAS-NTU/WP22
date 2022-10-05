@@ -2,6 +2,10 @@
     font-family: 'Futura';
 }
 
+body {
+    margin: 0 !important;
+}
+
 .boardPage {
     margin: 0;
 }
@@ -10,8 +14,6 @@
     position: absolute;
     height: 100%;
     width: 100%;
-
-
 }
 
 .boardContainer {
@@ -26,4 +28,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     .boardRow { display: flex; }
+    // Animation below
+    transition: .2s ease-in-out;
+    &.hidden {
+        top: 100%;
+        transform: translate(-50%, 0%);
+    }
 }
