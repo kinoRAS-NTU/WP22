@@ -1,7 +1,7 @@
 import './css/HomePage.scss';
 import React, { useState, useEffect } from 'react';
 
-const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNum, boardSize, boardSizeConfig, mineNumConfig }) => {
+const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNum, boardSize, boardSizeConfig, mineNumConfig, startGame }) => {
     const [showPanel, setShowPanel] = useState(false);
     const [error, setError] = useState(false);
     
@@ -19,14 +19,27 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
     const handleChangeBoardSize = (e) => { boardSizeOnChange(parseInt(e.target.value)) }
     const handleChangeAdjustVisibility = () => { ( showPanel ) ? hideAdjustBox() : showAdjustBox() }
     const handleClickStart = () => {
-        if (!showPanel) startGameOnClick()
-        else { handleChangeAdjustVisibility(); setTimeout(() => { startGameOnClick() }, 400) }
+        if (!showPanel) {
+            document.getElementsByClassName('HomeWrapper')[0].classList.add('hidden')
+            setTimeout(() => { startGameOnClick() }, 250)
+        } else {
+            handleChangeAdjustVisibility()
+            setTimeout(() => {
+                document.getElementsByClassName('HomeWrapper')[0].classList.add('hidden')
+                setTimeout(() => { startGameOnClick() }, 250)
+            }, 400)
+        }
     }
 
-    useEffect(() => { setError(mineNum > boardSize * boardSize) }, [mineNum, boardSize]);
+    useEffect(() => {
+        document.getElementsByClassName('HomeWrapper')[0].classList.add('hidden')
+        setTimeout(() => { document.getElementsByClassName('HomeWrapper')[0].classList.remove('hidden') }, 0)
+    }, [startGame])
+    
+    useEffect(() => { setError(mineNum > boardSize * boardSize) }, [mineNum, boardSize])
 
     return (
-        <div className='HomeWrapper'>
+        <div className='HomeWrapper hidden'>
             <p className='title'>MineSweeper</p>
             <button className="btn" onClick={handleClickStart} disabled={error}>Start Game</button>
             <div className="controlContainer">

@@ -50,8 +50,9 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     const revealCell = (x, y) => {
         if (board[x][y].revealed) { console.log('ERR/REVL Revealed'); return }
         if (gameOver)             { console.log('ERR/REVL GameOver'); return }
+        if (win)                  { console.log('ERR/REVL AlrdyWon'); return }
         if (board[x][y].flagged)  { console.log('ERR/REVL Flagged');  return }
-        const revealedResult = revealed(board, x, y, nonMineCount)
+        const revealedResult = revealed(board, x, y, nonMineCount, 1)
         setBoard(revealedResult.board)
         setNonMineCount(revealedResult.newNonMinesCount)
         if (mineLocations.filter(p => p[0] === x && p[1] === y).length) {
@@ -64,7 +65,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     const handleBackToHome = () => {
         setTimeout(() => {
             document.getElementsByClassName('boardContainer')[0].classList.add('hidden')
-            setTimeout(() => { backToHome() }, 200)
+            setTimeout(() => { backToHome() }, 400)
         }, 200)
     }
 

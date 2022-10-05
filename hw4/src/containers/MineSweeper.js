@@ -32,7 +32,7 @@ const MineSweeper = () => {
             { !startGame ?
             <HomePage mineNum={mineNum}     mineNumConfig={mineNumConfig}     mineNumOnChange={mineNumOnChange}
                       boardSize={boardSize} boardSizeConfig={boardSizeConfig} boardSizeOnChange={boardSizeOnChange}
-                      startGameOnClick={startGameOnClick} />
+                      startGameOnClick={startGameOnClick} startGame={startGame}/>
             :
             <Board boardSize={boardSize} mineNum={mineNum} backToHome={backToHomeOnClick}/>
             }

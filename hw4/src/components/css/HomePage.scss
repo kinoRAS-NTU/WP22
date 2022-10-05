@@ -1,11 +1,3 @@
-/****************************************************************************
-  FileName      [ HomePage.css ]
-  PackageName   [ src/components/css ]
-  Author        [ Cheng-Hua Lu ]
-  Synopsis      [ This file set the style of HomePage. ]
-  Copyright     [ 2022 10 ]
-****************************************************************************/
-
 * {
     font-family: 'Futura';
     box-sizing: border-box;
@@ -18,6 +10,9 @@ body {
 .HomeWrapper {
     height: 100%;
     width: 100%;
+    opacity: 1;
+    transition: opacity .1s ease-in-out .05s;
+    &.hidden { opacity: 0; }
 }
 
 .title {
@@ -28,6 +23,7 @@ body {
     padding-bottom: 1em;
     margin: 0;
     color: #0f0f4b;
+    @media screen and (max-width: 630px) { font-size: 50px; }
 }
 
 .btn {
@@ -110,6 +106,10 @@ body {
                     &.has-error{ color: #880000; }
                 }
             }
+            @media screen and (max-width: 800px) {
+                flex-direction: column;
+                .controlCol { width: 100% }
+            }
         }
     }
 }
@@ -119,6 +119,7 @@ body {
     input[type='range'] {
         -webkit-appearance: none !important;
         width: 400px;
+        max-width: 100%;
         height: 5px;
         background-color: #0f0f4b;
         border: none;

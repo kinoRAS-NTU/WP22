@@ -13,8 +13,8 @@ export default function Dashboard({ remainFlagNum, gameOver, win }) {
     }, [])
 
     useEffect(() => {
-            setSTime(time)
-            setTime(0)
+        setSTime(time)
+        setTime(0)
     }, [gameOver, win])
 
     return (

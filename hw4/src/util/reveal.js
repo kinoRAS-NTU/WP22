@@ -1,9 +1,9 @@
-export const revealed = (board, x, y, newNonMinesCount) => {
+export const revealed = (board, x, y, newNonMinesCount, mode) => {
 
     console.log(x, y)
     const maxLen = board.length
 
-    if (board[x][y].value === 0) {
+    if (board[x][y].value === 0 && mode) {
         let localMap1 = Array.from(Array(maxLen), () => Array(maxLen).fill(0));
         let localMap2 = Array.from(Array(maxLen), () => Array(maxLen).fill(0));
             localMap1[x][y] = 1
@@ -33,24 +33,22 @@ export const revealed = (board, x, y, newNonMinesCount) => {
             ce.forEach((re, ri) => {
                 if (re === 1) {
                     dirList2.forEach(dir => {
-                        if (ci + dir[0] >= 0 && ci + dir[0] < maxLen && ri + dir[1] >= 0 && ri + dir[1] < maxLen) {
-                            if (!board[ci + dir[0]][ri + dir[1]].flagged) {
-                                localMap2[ci + dir[0]][ri + dir[1]] = 1
-                            }
+                        if (ci + dir[0] >= 0 && ci + dir[0] < maxLen && ri + dir[1] >= 0 && ri + dir[1] < maxLen && !board[ci + dir[0]][ri + dir[1]].flagged && !board[ci + dir[0]][ri + dir[1]].revealed) {
+                            board[ci + dir[0]][ri + dir[1]].revealed = true
+                            newNonMinesCount--
                         }
                     })
                 }
             })
         })
 
-        localMap2.forEach((ce, ci) => {
-            ce.forEach((re, ri) => {
-                if (re === 1 && !board[ci][ri].revealed) {
-                    board[ci][ri].revealed = true
-                    newNonMinesCount--
-                }
-            })
-        })
+        // localMap2.forEach((ce, ci) => {
+        //     ce.forEach((re, ri) => {
+        //         if (re === 1) {
+                    
+        //         }
+        //     })
+        // })
 
         // let boardString = ''
         // board.forEach(r => {

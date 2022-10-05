@@ -27,7 +27,7 @@
         height: 25%;
     }
     .modalContent {
-        margin: auto 20%;
+        margin: auto auto;
         justify-content: center;
         text-align: center;
         height: 50%;
@@ -37,6 +37,13 @@
         border-radius: 25px;
         transition: opacity .2s ease-in-out .2s;
         opacity: 1;
+        width: 60%;
+        min-width: 500px;
+        @media screen and (max-width: 550px) {
+            min-width: unset;
+            width: 100%;
+            max-width: 90%;
+        }
         .modalResult {
             color: #0f0f4b;
             width: 100%;
@@ -48,6 +55,9 @@
             align-items: center;
             justify-content: center;
             padding-top: .375em;
+            @media screen and (max-width: 550px) {
+                height: 40%;
+            }
         }    
         .modalBtnWrapper {
             display: flex;
@@ -55,6 +65,13 @@
             justify-content: center;
             align-items: center;
             height: 50%;
+            @media screen and (max-width: 550px) {
+                flex-direction: column;
+                .modalBtn {
+                    margin-top: 1em !important;
+                    width: 80% !important;
+                }
+            }
             .modalBtn {
                 background-color: #0f0f4b;
                 color: lightblue;

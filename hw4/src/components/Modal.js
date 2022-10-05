@@ -21,7 +21,7 @@ export default function Modal({ restartGame, backToHome, gameOver, win }) {
     }
 
     const handleModalAniIn = () => {
-        setTimeout(() => {document.getElementsByClassName('modal')[0].classList.remove('hidden')}, 0)
+        setTimeout(() => {document.getElementsByClassName('modal')[0].classList.remove('hidden')}, 50)
     }
 
     const handleModalAniOut = () => {

@@ -29,9 +29,12 @@ body {
     transform: translate(-50%, -50%);
     .boardRow { display: flex; }
     // Animation below
-    transition: .2s ease-in-out;
+    opacity: 1;
+    transition: transform .3s ease-in-out, top .3s ease-in-out, opacity .2s ease-in-out .1s;
     &.hidden {
         top: 100%;
+        opacity: 0;
         transform: translate(-50%, 0%);
+        transition: transform .3s ease-in-out .1s, top .3s ease-in-out .1s, opacity .2s ease-in-out;
     }
 }
