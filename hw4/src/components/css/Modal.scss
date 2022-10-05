@@ -12,20 +12,27 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-height: 50%;
+    max-height: 100%;
     transition: max-height .2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &.hidden {
         max-height: 0;
         overflow: hidden;
         transition: max-height .2s ease-in-out .2s;
+        min-height: 0;
         .modalContent {
             opacity: 0;
             transition: opacity .2s ease-in-out;
         }
     }
-    .modalWrapper {
-        height: 25%;
-    }
+    // .modalWrapper {
+    //     height: 25%;
+    //     @media screen and (max-width: 550px) {
+    //         height: 20%;
+    //     }
+    // }
     .modalContent {
         margin: auto auto;
         justify-content: center;
@@ -39,10 +46,17 @@
         opacity: 1;
         width: 60%;
         min-width: 500px;
+        @media screen and (max-height: 400px) {
+            min-width: unset;
+            width: 100%;
+            max-width: 80%;
+            height: 90%;
+        }
         @media screen and (max-width: 550px) {
             min-width: unset;
             width: 100%;
             max-width: 90%;
+            height: 90%;
         }
         .modalResult {
             color: #0f0f4b;
@@ -57,6 +71,11 @@
             padding-top: .375em;
             @media screen and (max-width: 550px) {
                 height: 40%;
+                font-size: 35px;
+            }
+            @media screen and (max-height: 400px) {
+                height: 50%;
+                font-size: 35px;
             }
         }    
         .modalBtnWrapper {

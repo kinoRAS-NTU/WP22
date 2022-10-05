@@ -8,17 +8,20 @@ import React, { useEffect, useState } from 'react';
 
 
 const Board = ({ boardSize, mineNum, backToHome }) => {
-    const [board, setBoard] = useState([]);                     // An 2-dimentional array. It is used to store the board.
-    const [nonMineCount, setNonMineCount] = useState(-1);       // An integer variable to store the number of cells whose value are not '💣'.
-    const [mineLocations, setMineLocations] = useState([]);     // An array to store all the coordinate of '💣'.
-    const [gameOver, setGameOver] = useState(false);            // A boolean variable. If true, means you lose the game (Game over).
-    const [remainFlagNum, setRemainFlagNum] = useState(0);      // An integer variable to store the number of remain flags.
-    const [win, setWin] = useState(false);                      // A boolean variable. If true, means that you win the game.
+    const [board, setBoard] = useState([])                      // An 2-dimentional array. It is used to store the board.
+    const [nonMineCount, setNonMineCount] = useState(-1)        // An integer variable to store the number of cells whose value are not '💣'.
+    const [mineLocations, setMineLocations] = useState([])      // An array to store all the coordinate of '💣'.
+    const [gameOver, setGameOver] = useState(false)             // A boolean variable. If true, means you lose the game (Game over).
+    const [remainFlagNum, setRemainFlagNum] = useState(0)       // An integer variable to store the number of remain flags.
+    const [win, setWin] = useState(false)                       // A boolean variable. If true, means that you win the game.
+    const [touchMode, setTouchMode] = useState(0)
 
     useEffect(() => {
         setTimeout(() => {document.getElementsByClassName('boardContainer')[0].classList.remove('hidden')}, 0)
+        setTouchMode(matchMedia("(hover: none)").matches ? 1 : 0)
         freshBoard()
     }, [])
+
     useEffect(() => { !nonMineCount && setWin(true) }, [nonMineCount])
 
     // Creating a board
@@ -69,6 +72,10 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         }, 200)
     }
 
+    const handleClickFlagSwitch = () => {
+        setTouchMode(t => (t === 1) ? 2 : 1)
+    }
+
     return (
         <div className='boardPage'>
             <div className='boardWrapper'>
@@ -76,11 +83,19 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                     <Dashboard remainFlagNum={remainFlagNum} gameOver={gameOver} win={win}/>
                     {board !== [] && board.map((row, i) => 
                         <div id={'row' + i} key={'r' + i} className="boardRow"> {row.map((col, j) => 
-                            <Cell key={'r' + i + 'c' + j} detail={board[i][j]} 
+                            <Cell key={'r' + i + 'c' + j} detail={board[i][j]} touchMode={touchMode}
                                   rowIdx={i} colIdx={j} updateFlag={updateFlag} revealCell={revealCell}/> )}
                         </div>
                     )}
                 </div>
+                {(touchMode !== 0) &&
+                <div id="flagSwitch" className={touchMode === 2 && 'touchOn'}>
+                    <div className="flagSwitchBtn" onClick={handleClickFlagSwitch}>
+                        <div className="flagSwitchIcon">🚩</div>
+                        <div className="flagSwitchText">FLAG</div>
+                    </div>
+                </div>
+                }
             </div>
             <Modal restartGame={restartGame} backToHome={handleBackToHome} gameOver={gameOver} win={win}/>
         </div>

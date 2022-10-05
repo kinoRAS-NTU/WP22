@@ -1,7 +1,7 @@
 import "./css/Cell.css"
 import React from "react";
 
-export default function Cell({ rowIdx, colIdx, detail, updateFlag, revealCell }) {
+export default function Cell({ rowIdx, colIdx, detail, updateFlag, revealCell, touchMode }) {
     const cellStyle = {
         background: detail.revealed ?
             detail.value === '💣' ? '#880000' : mineCheckPattern(detail.x, detail.y) : checkPattern(detail.x, detail.y),
@@ -9,12 +9,18 @@ export default function Cell({ rowIdx, colIdx, detail, updateFlag, revealCell })
         border: detail.revealed ? "2px inset darkgrey" : "2px outset white",
     }
     const ID = rowIdx.toString() + '-' + colIdx.toString()
+    const handleLeftClickAction = (e, x, y) => {
+        switch (touchMode) {
+            case 2: updateFlag(e, x, y); break
+            default: revealCell(x, y);
+        }
+    }
     return (
         <div
             id={ID}
             className='cell'
             style={cellStyle}
-            onClick={() => revealCell(detail.x, detail.y)}
+            onClick={(e) => handleLeftClickAction(e, detail.x, detail.y)}
             onContextMenu={(e) => updateFlag(e, detail.x, detail.y)}
         >
             {!detail.revealed && detail.flagged ? "🚩" : detail.revealed && detail.value !== 0 ? (detail.value === '💣' ? '💣' : detail.value) : ''}

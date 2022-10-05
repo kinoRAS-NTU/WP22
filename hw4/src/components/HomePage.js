@@ -15,8 +15,8 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
         setTimeout(() => { document.getElementsByClassName('controlWrapper')[0].classList.remove('hidden') }, 0)
     }
 
-    const handleChangeMineNum = (e) => { mineNumOnChange(parseInt(e.target.value)) }
-    const handleChangeBoardSize = (e) => { boardSizeOnChange(parseInt(e.target.value)) }
+    const handleChangeMineNum = (e) => { mineNumOnChange(parseInt(e.target.value, 10)) }
+    const handleChangeBoardSize = (e) => { boardSizeOnChange(parseInt(e.target.value, 10)) }
     const handleChangeAdjustVisibility = () => { ( showPanel ) ? hideAdjustBox() : showAdjustBox() }
     const handleClickStart = () => {
         if (!showPanel) {
@@ -66,4 +66,4 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
     );
 
 }
-export default HomePage;   
+export default HomePage;

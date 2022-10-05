@@ -24,6 +24,7 @@ body {
     margin: 0;
     color: #0f0f4b;
     @media screen and (max-width: 630px) { font-size: 50px; }
+    @media screen and (max-width: 400px) { font-size: 40px; }
 }
 
 .btn {
@@ -45,6 +46,12 @@ body {
         opacity: .5;
         cursor: not-allowed;
     }
+    @media screen and (max-width: 400px) {
+        font-size: 25px;
+        border-radius: 20px;
+        padding: 8px 24px;
+        margin: 18px auto;
+    }
 }
 
 .controlContainer {
@@ -55,7 +62,7 @@ body {
         transition: max-height .2s ease-in-out;
         max-height: 500px;
         max-width: 90%;
-        margin: 0 auto;
+        margin: 0 auto 16px auto;
         > * {
             opacity: 1;
             transition: opacity .2s ease-in-out .05s;
@@ -114,6 +121,8 @@ body {
     }
 }
 
+
+
 /* Chrome */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     input[type='range'] {
@@ -139,5 +148,4 @@ body {
     input[type='range']::-webkit-slider-thumb:hover {
         background: #0f0f4b;
     }
-
 }

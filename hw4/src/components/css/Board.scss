@@ -19,7 +19,7 @@ body {
 .boardContainer {
     border: 10px solid darkgray;
     border-radius: 10px;
-    background-color: darkgrey;
+    background-color: darkgray;
     align-items: center;
     justify-content: center;
     margin: auto;
@@ -36,5 +36,53 @@ body {
         opacity: 0;
         transform: translate(-50%, 0%);
         transition: transform .3s ease-in-out .1s, top .3s ease-in-out .1s, opacity .2s ease-in-out;
+    }
+}
+#flagSwitch {
+    position: fixed;
+    bottom: calc(10px + env(safe-area-inset-bottom)) ;
+    left: 50%;
+    transform: translateX(-50%);
+    .flagSwitchBtn {
+        border-radius: 10px;
+        background-color: #EAEAEA;
+        border: 2px solid #EAEAEA;
+        cursor: pointer;
+        text-align: c;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        // padding: 6px 12px;
+        opacity: .5;
+        transition: .1s ease-in-out;
+        width: 50px;
+        height: 50px;
+        .flagSwitchIcon {
+            font-size: 24px;
+            line-height: 1em;
+            padding-left: 3px;
+            filter: sepia(60%);
+            transition: .1s ease-in-out;
+        }
+        .flagSwitchText {
+            font-size: 12px;
+            padding: 2px 0 2px 1px;
+            line-height: 1em;
+        }
+    }
+    &.touchOn {
+        .flagSwitchBtn {
+            opacity: 1;
+            border: 2px solid #bf0000;
+            .flagSwitchIcon {
+                filter: sepia(0%);
+            }
+        }
+    }
+    @media screen and (max-height: 400px) {
+        left: unset;
+        right: calc(10px + env(safe-area-inset-right)) ;
+        transform: unset;
     }
 }
