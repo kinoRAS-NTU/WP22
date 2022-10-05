@@ -1,4 +1,4 @@
-# HW4: React MineSweeper Exercise
+# HW4: React Exercise — MineSweeper 
 
 同學你好！以下是此份作業的完成情況及簡介，請參考。
 

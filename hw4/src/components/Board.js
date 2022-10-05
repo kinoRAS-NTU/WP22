@@ -89,7 +89,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                     )}
                 </div>
                 {(touchMode !== 0) &&
-                <div id="flagSwitch" className={touchMode === 2 && 'touchOn'}>
+                <div id="flagSwitch" className={(touchMode === 2) ? 'touchOn' : ''}>
                     <div className="flagSwitchBtn" onClick={handleClickFlagSwitch}>
                         <div className="flagSwitchIcon">🚩</div>
                         <div className="flagSwitchText">FLAG</div>

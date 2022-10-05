@@ -1,6 +1,6 @@
 export const revealed = (board, x, y, newNonMinesCount, mode) => {
 
-    console.log(x, y)
+    // console.log(x, y)
     const maxLen = board.length
 
     if (board[x][y].value === 0 && mode) {
