@@ -8,7 +8,7 @@
 
 import randomNum from "./randomFixSeed";
 
-export default (boardSize, mineNum) => {
+const createBoard = (boardSize, mineNum) => {
     let board = [];
     let mineLocations = [];
 
@@ -76,7 +76,10 @@ export default (boardSize, mineNum) => {
         }
     }
 
-    //  Testing: printBoard()
+    // Testing:
+    while (false) printBoard()
 
     return { board, mineLocations };
 };
+
+export default createBoard

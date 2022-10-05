@@ -19,18 +19,13 @@ const MineSweeper = () => {
     const [startGame, setStartGame] = useState(false)
     const [mineNum,   setMineNum]   = useState(mineNumConfig[2])
     const [boardSize, setBoardSize] = useState(boardSizeConfig[2])
-    // Basic TODO: Change `startGame` from false to true when this function is called
-    const startGameOnClick = () => {
-        setStartGame(1)
-    }
+
+    const startGameOnClick = () => { setStartGame(1) }
 
     const mineNumOnChange = (value) => { setMineNum(value) }
     const boardSizeOnChange = (value) => { setBoardSize(value) }
 
-    // Advanced TODO: Change `startGame` from true to false when this function is called
-    const backToHomeOnClick = () => {
-        
-    }
+    const backToHomeOnClick = () => { setStartGame(0) }
 
     return (
         <div className='mineSweeper'>
@@ -39,11 +34,8 @@ const MineSweeper = () => {
                       boardSize={boardSize} boardSizeConfig={boardSizeConfig} boardSizeOnChange={boardSizeOnChange}
                       startGameOnClick={startGameOnClick} />
             :
-            <Board boardSize={boardSize} mineNum={mineNum}/>
+            <Board boardSize={boardSize} mineNum={mineNum} backToHome={backToHomeOnClick}/>
             }
-            
-
-            
         </div>
     );
 }

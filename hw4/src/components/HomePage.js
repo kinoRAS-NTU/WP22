@@ -5,20 +5,23 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
     const [showPanel, setShowPanel] = useState(false);
     const [error, setError] = useState(false);
     
-    const showAdjustBox = () => {
+    const hideAdjustBox = () => {
         document.getElementsByClassName('controlWrapper')[0].classList.add('hidden')
         setTimeout(() => { setShowPanel(!showPanel) }, 250)
     }
 
-    const hideAdjustBox = () => {
+    const showAdjustBox = () => {
         setShowPanel(!showPanel)
         setTimeout(() => { document.getElementsByClassName('controlWrapper')[0].classList.remove('hidden') }, 0)
     }
 
     const handleChangeMineNum = (e) => { mineNumOnChange(parseInt(e.target.value)) }
     const handleChangeBoardSize = (e) => { boardSizeOnChange(parseInt(e.target.value)) }
-    const handleChangeAdjustVisibility = () => { ( showPanel ) ? showAdjustBox() : hideAdjustBox() }
-    const handleClickStart = () => { startGameOnClick(); showPanel && hideAdjustBox() }
+    const handleChangeAdjustVisibility = () => { ( showPanel ) ? hideAdjustBox() : showAdjustBox() }
+    const handleClickStart = () => {
+        if (!showPanel) startGameOnClick()
+        else { handleChangeAdjustVisibility(); setTimeout(() => { startGameOnClick() }, 400) }
+    }
 
     useEffect(() => { setError(mineNum > boardSize * boardSize) }, [mineNum, boardSize]);
 

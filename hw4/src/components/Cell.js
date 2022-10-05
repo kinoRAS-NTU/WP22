@@ -1,16 +1,6 @@
-/****************************************************************************
-  FileName      [ Cell.js ]
-  PackageName   [ src/components ]
-  Author        [ Cheng-Hua Lu ]
-  Synopsis      [ This file generates a single cell. ]
-  Copyright     [ 2022 10 ]
-****************************************************************************/
-
 import "./css/Cell.css"
 import React from "react";
 
-// Nothing to do with this file.
-// The input 'detail' of Cell is one single cell which have properties of x, y, value, flagged and revealed.
 export default function Cell({ rowIdx, colIdx, detail, updateFlag, revealCell }) {
     const cellStyle = {
         background: detail.revealed ?
@@ -29,7 +19,6 @@ export default function Cell({ rowIdx, colIdx, detail, updateFlag, revealCell })
         >
             {!detail.revealed && detail.flagged ? "🚩" : detail.revealed && detail.value !== 0 ? (detail.value === '💣' ? '💣' : detail.value) : ''}
         </div>
-
     );
 }
 
