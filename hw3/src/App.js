@@ -116,7 +116,9 @@ class App extends Component {
     handleRemoveDoneTodo () {
         let todos = this.state.todos
         todos.filter(e => { return e.done }).forEach(e => {
-            document.getElementById('todo-b' + e.id).classList.add('removing')
+            if (document.getElementById('todo-b' + e.id)) {
+                document.getElementById('todo-b' + e.id).classList.add('removing')
+            }
         });
         todos = todos.filter(e => { return !e.done })
         setTimeout(() => {
