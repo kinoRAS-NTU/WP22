@@ -14,7 +14,7 @@ const Row = ({ guess, rowIdx }) => {
     const wordboxList = [0, 1, 2, 3, 4];
     let hasGuess = (guess !== undefined);
     return (
-        // <div className='Row-container'>
+        <div className='Row-container'>
             <div className='Row-wrapper'>
             {wordboxList && wordboxList.map((index) => (
                 <div id={rowIdx+'-'+index} key={rowIdx+'-'+index}
@@ -23,7 +23,7 @@ const Row = ({ guess, rowIdx }) => {
                 </div>
             ))}      
             </div>
-        // </div>
+        </div>
     )
 }
 

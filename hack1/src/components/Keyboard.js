@@ -18,8 +18,8 @@ const Keyboard = ({ usedChars }) => {
     const [keyboardRows, setKeyboardRows] = useState(null);
 
     useEffect(() => {
-        setFirstRowLetters(config.letters.slice(0, 9));
-        setSecondRowLetters(config.letters.slice(10, 18));
+        setFirstRowLetters(config.letters.slice(0, 10));
+        setSecondRowLetters(config.letters.slice(10, 19));
         setThirdRowLetters(config.letters.slice(19, 29));
     }, []);
 

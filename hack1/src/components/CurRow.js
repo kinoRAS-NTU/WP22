@@ -16,7 +16,7 @@ const CurRow = ({ curGuess, rowIdx }) => {
     let fillLen = letters.length;
 
     return (
-        // <div className='Row-container'>
+        <div className='Row-container'>
             <div className='Row-wrapper current'>
             {wordboxList && wordboxList.map((index) => (
                 <div id={rowIdx+'-'+index} key={rowIdx+'-'+index}
@@ -25,7 +25,7 @@ const CurRow = ({ curGuess, rowIdx }) => {
                 </div>
             ))}      
             </div>
-        // </div>
+        </div>
     )
 }
 
