@@ -31,7 +31,7 @@ const Keyboard = ({ usedChars }) => {
         <div className='Keyboard-container'>
             {/* TODO 5: add color to each `Keyboard-char`. */}
         {keyboardRows && keyboardRows.map((row, index) => (
-            <div id={'KBrow_'+index} key={'KBrow_'+index} className='Keyboard-row'>
+            <div id={'KBrow_'+(index+1)} key={'KBrow_'+(index+1)} className='Keyboard-row'>
                 {row && row.map((letter) => {
                     const color = usedChars[letter.char]
                     return (

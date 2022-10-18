@@ -49,8 +49,8 @@ const Wordle = ({ solution }) => {
 
     return (
         <div className='Wordle-container'>
-            {(win || gameOver) &&
-                <div id='result'>
+            {
+                <div id='result' className={win ? 'Wordle-win' : gameOver ? 'Wordle-lose' : 'Wordle-lose Hidden'}>
                     {result}
                 </div>
             }

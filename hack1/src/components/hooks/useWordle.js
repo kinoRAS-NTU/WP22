@@ -41,27 +41,29 @@ const useWordle = (solution) => {
         }
         // (3) Press Enter, store curGuess to guesses, reset curGuess and update parameters
 
-        let localAlphaCount = {}
-        let localSolLetter = solution.split('');
+        let alphaCountObj = {}
+        let solLetterList = solution.split('');
         let localGuess = [];
         let localUsedChars = usedChars;
 
         solution.split('').forEach(elem => {
-            if (localAlphaCount[elem] === undefined) { localAlphaCount[elem] = 1; }
-            else { localAlphaCount[elem] += 1 }
+            if (alphaCountObj[elem] === undefined) { alphaCountObj[elem] = 1; }
+            else { alphaCountObj[elem] += 1 }
         });
 
+        // console.log(alphaCountObj)
         curGuess.split('').forEach((letter, index) => {
-            // console.log(index, letter, localSolLetter.indexOf(letter), turn+'-'+index)
-            if (localSolLetter.indexOf(letter) === index && localAlphaCount[letter] !== undefined && localAlphaCount[letter] > 0) {
+            // console.log(index, letter, solLetterList.indexOf(letter), turn+'-'+index)
+            // console.log("READING #" + index, solLetterList.indexOf(letter), alphaCountObj[letter]);
+            if (solLetterList[index] === letter && alphaCountObj[letter] !== undefined && alphaCountObj[letter] > 0) {
                 document.getElementById(turn+'-'+index).classList.add('green');
                 localGuess.push({ char: letter, color: 'green' })
                 localUsedChars[letter] = 'green';
-                localAlphaCount[letter] --;
-            } else if (localSolLetter.indexOf(letter) !== -1 && localAlphaCount[letter] !== undefined && localAlphaCount[letter] > 0) {
+                alphaCountObj[letter] --;
+            } else if (solLetterList[index] !== letter && alphaCountObj[letter] !== undefined && alphaCountObj[letter] > 0) {
                 document.getElementById(turn+'-'+index).classList.add('yellow');
                 localGuess.push({ char: letter, color: 'yellow' })
-                localAlphaCount[letter] --;
+                alphaCountObj[letter] --;
                 if (localUsedChars[letter] !== 'green') { localUsedChars[letter] = 'yellow'; }
             } else {
                 document.getElementById(turn+'-'+index).classList.add('grey');
@@ -77,15 +79,6 @@ const useWordle = (solution) => {
         setIsCorrect(curGuess === solution);
         setTurn(turn + 1);
         setCurGuess('');
-
-        // printTest();
-
-        // TODO 5: update parameters, check each char usage and show in `Keyboard` and reset `curGuess`.
-        // 5-1) check if curGuess === solution, if true, set `isCorrect` to true.
-        
-        
-        // 5-2) usedChars update
-        
         
     }
 
