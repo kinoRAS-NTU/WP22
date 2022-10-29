@@ -1,0 +1,127 @@
+* {
+  font-family: 'Futura';
+}
+
+body {
+  margin: 0 !important;
+}
+
+.boardPage {
+  margin: 0;
+}
+
+.boardWrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.boardContainer {
+  border: 10px solid darkgray;
+  border-radius: 10px;
+  background-color: darkgray;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 1;
+  -webkit-transition: top .3s ease-in-out, opacity .2s ease-in-out .1s, -webkit-transform .3s ease-in-out;
+  transition: top .3s ease-in-out, opacity .2s ease-in-out .1s, -webkit-transform .3s ease-in-out;
+  transition: transform .3s ease-in-out, top .3s ease-in-out, opacity .2s ease-in-out .1s;
+  transition: transform .3s ease-in-out, top .3s ease-in-out, opacity .2s ease-in-out .1s, -webkit-transform .3s ease-in-out;
+}
+
+.boardContainer .boardRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.boardContainer.hidden {
+  top: 100%;
+  opacity: 0;
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
+  -webkit-transition: top .3s ease-in-out .1s, opacity .2s ease-in-out, -webkit-transform .3s ease-in-out .1s;
+  transition: top .3s ease-in-out .1s, opacity .2s ease-in-out, -webkit-transform .3s ease-in-out .1s;
+  transition: transform .3s ease-in-out .1s, top .3s ease-in-out .1s, opacity .2s ease-in-out;
+  transition: transform .3s ease-in-out .1s, top .3s ease-in-out .1s, opacity .2s ease-in-out, -webkit-transform .3s ease-in-out .1s;
+}
+
+#flagSwitch {
+  position: fixed;
+  bottom: calc(10px + env(safe-area-inset-bottom));
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+#flagSwitch .flagSwitchBtn {
+  border-radius: 10px;
+  background-color: #EAEAEA;
+  border: 2px solid #EAEAEA;
+  cursor: pointer;
+  text-align: c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  opacity: .5;
+  -webkit-transition: .1s ease-in-out;
+  transition: .1s ease-in-out;
+  width: 50px;
+  height: 50px;
+}
+
+#flagSwitch .flagSwitchBtn .flagSwitchIcon {
+  font-size: 24px;
+  line-height: 1em;
+  padding-left: 3px;
+  -webkit-filter: sepia(60%);
+          filter: sepia(60%);
+  -webkit-transition: .1s ease-in-out;
+  transition: .1s ease-in-out;
+}
+
+#flagSwitch .flagSwitchBtn .flagSwitchText {
+  font-size: 12px;
+  padding: 2px 0 2px 1px;
+  line-height: 1em;
+}
+
+#flagSwitch.touchOn .flagSwitchBtn {
+  opacity: 1;
+  border: 2px solid #bf0000;
+}
+
+#flagSwitch.touchOn .flagSwitchBtn .flagSwitchIcon {
+  -webkit-filter: sepia(0%);
+          filter: sepia(0%);
+}
+
+@media screen and (max-height: 400px) {
+  #flagSwitch {
+    left: unset;
+    right: calc(10px + env(safe-area-inset-right));
+    -webkit-transform: unset;
+            transform: unset;
+  }
+}
+/*# sourceMappingURL=Board.css.map */

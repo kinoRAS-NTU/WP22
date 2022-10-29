@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-import './App.scss'
+import './App.css'
 
 function App() {
     const [hasStarted, setHasStarted] = useState(false)
