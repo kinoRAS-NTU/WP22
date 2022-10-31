@@ -11,6 +11,7 @@
 3. 返回 `./`，在兩個 terminal 中分別運行 `yarn start` 及 `yarn server`
 4. 開啟 [http://localhost:3000](http://localhost:3000) 以在瀏覧器中預覽運行結果。
 
+註：你可能必須另外安裝 SCSS 套件才能順利運行。
 註：若本裝置的 3000 連接埠已經佔用，請以 terminal 所示的連接埠連接。
 註：若本裝置的 4000 連接埠已經佔用，請在 `./frontend/src/App.js` 中把 baseURL 的連接埠改成實際使用的連接埠。
 
