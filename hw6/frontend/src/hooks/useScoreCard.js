@@ -24,10 +24,14 @@ const ScoreCardProvider = (props) => {
   };
 
   const addRegularMessage = (...ms) => {
-    setMessages([
-      ...messages,
-      ...ms.map((m) => makeMessage(m, REGULAR_MESSAGE_COLOR)),
-    ]);
+    if (ms[0] && ms[0] === 'Database cleared') {
+      setMessages([ ...ms.map((m) => makeMessage(m, REGULAR_MESSAGE_COLOR)) ])
+    } else {
+      setMessages([
+        ...messages,
+        ...ms.map((m) => makeMessage(m, REGULAR_MESSAGE_COLOR)),
+      ]);
+    }
   };
 
   const addErrorMessage = (message) => {
