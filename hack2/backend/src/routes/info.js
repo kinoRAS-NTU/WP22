@@ -22,8 +22,8 @@ exports.GetSearch = async (req, res) => {
     Info.find()
     .sort(sortObj)
     .exec((err, data) => {
-        if (!err) res.status(200).send({ message: 'success', contents: data })
-        else      res.status(403).send({ message: 'error', contents: [] })
+        if (err)    res.status(403).send({ message: 'error', contents: [] })
+        else        res.status(200).send({ message: 'success', contents: data })
     })
     
     // TODO Part II-2-a: revise the route so that the result is filtered with priceFilter, mealFilter and typeFilter
