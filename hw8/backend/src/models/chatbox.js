@@ -1,13 +1,13 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
-const MessageSchema = new Schema({
-    chatBox: { type: String },
+mongoose.set('strictQuery', false);
+
+const ChatBoxSchema = new Schema({
     name: { type: String },
-    to: { type: String },
-    body: { type: String, required: [true, 'Body field is required.'] }
+    messages: { type: Array },
 })
 
-const MessageModel = mongoose.model('Message', MessageSchema)
+const ChatBoxModel = mongoose.model('ChatBox', ChatBoxSchema)
 
-export default MessageModel
+export default ChatBoxModel
