@@ -1,27 +1,31 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
-import { useChat } from "./hooks/useChat"
-import SignIn from './SignIn'
-import ChatRoom from './ChatRoom'
+import Header from './Header';
+import Body from './Body';
+import styled from 'styled-components';
+import Paper from '@material-ui/core/Paper';
 
 const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 500px;
-    margin: auto;
+  margin: auto;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
-const App = () => {
-    const { status, me, signedIn, displayStatus } = useChat()
+const StyledPaper = styled(Paper)`
+  padding: 2em;
+`;
 
-    useEffect(() => { displayStatus(status) }, [status])
-
-    return (
-        <Wrapper> { signedIn ? <ChatRoom /> : <SignIn me={me}/> } </Wrapper>
-    )
+function App() {
+  return (
+    <Wrapper>
+      <StyledPaper elevation={3}>
+        <Header />
+        <Body />
+      </StyledPaper>
+    </Wrapper>
+  );
 }
 
-export default App
+export default App;

@@ -1,17 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./containers/App";
-import { ChatProvider } from "./containers/hooks/useChat"
-import reportWebVitals from "./reportWebVitals";
-
 import "./index.css";
-import "antd/dist/antd.css";
-
+import App from "./Containers/App";
+import reportWebVitals from "./reportWebVitals";
+import { ScoreCardProvider } from "./hooks/useScoreCard";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ChatProvider><App /></ChatProvider>
+    <ScoreCardProvider>
+      <App />
+    </ScoreCardProvider>
   </React.StrictMode>
 );
 

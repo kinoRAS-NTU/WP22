@@ -1,6 +1,6 @@
-# HW7: Full-Stack Application -- Chat Room
+# HW6: Backend + DB Practice - ScoreCard DB
 
-同學你好！以下是此份作業的完成情況，請參考。
+同學你好！以下是此份作業的完成情況及簡介，請參考。
 
 ## 01 安裝並運行
 
@@ -9,12 +9,12 @@
 1. 請先確認已安裝 yarn
 2. 分別至 `./frontend` 及 `./backend` 運行 `yarn install` 以安裝所需模組
 3. 請把你的 `.env` 檔案移至 `./backend` 下
-4. 返回 `./`，在兩個 terminal 中分別運行 `yarn start` 及 `yarn server`
-5. 開啟 [http://localhost:3000](http://localhost:3000) 以在瀏覧器中預覽運行結果。
+3. 返回 `./`，在兩個 terminal 中分別運行 `yarn start` 及 `yarn server`
+4. 開啟 [http://localhost:3000](http://localhost:3000) 以在瀏覧器中預覽運行結果。
 
 註 1：若本裝置的 3000 連接埠已經佔用，請以 terminal 所示的連接埠連接。
-註 2：請確定本裝置的 4000 連接埠未被佔用。
-註 3：本作業未採用建議的資料庫格式。因此你可能必須先清空你的資料庫，才能正常存取資料。
+註 2：請本裝置的 4000 連接埠未被佔用。
+註 3：你可能必須先清空你的資料庫，才能正常存取資料。
 
 ## 02 已完成的基本要求
 

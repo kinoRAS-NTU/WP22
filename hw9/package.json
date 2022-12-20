@@ -1,5 +1,5 @@
 {
-  "name": "hw7",
+  "name": "hw6",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -7,5 +7,7 @@
     "start": "cd frontend && yarn start",
     "server": "cd backend && yarn server"
   },
-  "dependencies": {}
+  "devDependencies": {
+    "eslint-plugin-jest": "^27.1.3"
+  }
 }
