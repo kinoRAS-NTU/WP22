@@ -1,6 +1,8 @@
 {
-  "name": "111-1-deploy-demo",
+  "name": "hw6",
   "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
   "scripts": {
     "install:all": "cd frontend && yarn install && cd ../backend && yarn install",
     "start": "cd frontend && yarn start",
@@ -9,9 +11,7 @@
     "build": "cd frontend && yarn build",
     "deploy": "cd backend && yarn deploy"
   },
-  "repository": "git@github.com:ntuee-web-programming/111-1-deploy-demo.git",
-  "author": "madmaxieee <76544194+madmaxieee@users.noreply.github.com>",
-  "license": "MIT",
-  "main": "index.js",
-  "packageManager": "yarn@1.22.19"
+  "devDependencies": {
+    "eslint-plugin-jest": "^27.1.3"
+  }
 }
