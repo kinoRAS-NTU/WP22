@@ -6,12 +6,14 @@ import routes from './routes'
 const app = express()
 
 // INIT
-app.use(cors())
+if (process.env.NODE_ENV === "development") {
+    app.use(cors())
+}
 app.use(express.json())
 db.connect()
 
 // define routes
-app.use('/', routes)
+app.use('/api', routes)
 
 if (process.env.NODE_ENV === "production") {
     const __dirname = path.resolve()
