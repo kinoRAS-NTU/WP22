@@ -1,17 +1,25 @@
 import express from 'express'
 import cors from 'cors'
 import db from './db'
-import routes from './routes';
+import routes from './routes'
 
 const app = express()
 
 // INIT
 app.use(cors())
 app.use(express.json())
-db.connect();
+db.connect()
 
 // define routes
-app.use('/', routes);
+app.use('/', routes)
+
+if (process.env.NODE_ENV === "production") {
+    const __dirname = path.resolve()
+    app.use(express.static(path.join(__dirname, "../frontend", "build")))
+    app.get("/*", function (req, res) {
+        res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"))
+    })
+}
 
 // define server
 const port = process.env.PORT || 4000
