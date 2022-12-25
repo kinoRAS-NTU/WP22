@@ -2,6 +2,7 @@
   "name": "hw6",
   "version": "1.0.0",
   "main": "index.js",
+  "packageManager": "yarn@1.22.19",
   "license": "MIT",
   "scripts": {
     "install:all": "cd frontend && yarn install && cd ../backend && yarn install",
@@ -10,8 +11,5 @@
     "install:prod": "cd frontend && yarn install --freeze-lockfile && cd ../backend && yarn install --freeze-lockfile",
     "build": "cd frontend && yarn build",
     "deploy": "cd backend && yarn deploy"
-  },
-  "devDependencies": {
-    "eslint-plugin-jest": "^27.1.3"
   }
 }
