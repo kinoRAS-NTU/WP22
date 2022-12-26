@@ -9,9 +9,9 @@
 ## 部署流程
 
 1. 先註冊、開專案，並選擇要部署上去的 repo 
-     - 我發現直接在 wp1111 資料夾下 deploy 會有 module not found 的 error，後來改開一個新的 repo 就作功了
+     - 我發現直接在 wp1111 資料夾下 deploy 會有 module not found 的 error，後來改開一個新的 repo 就成功了
 2. (依助教的示範繼續)
-3. 再建立一個 MongoDB 服務，Railway 會自動把 MONGO_URL 等參數代入
+3. 再建立一個 MongoDB 服務，Railway 會自動把 MONGO_URL 等參數代入，很方便。
 4. 完成
 
 ## 遇到的困難
